@@ -1,0 +1,71 @@
+package com.ku.dku.service;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.ku.dku.entity.MsRepairYear;
+import com.ku.dku.entity.TxRepairNotification;
+import com.ku.dku.repository.MsRepairYearRepository;
+import com.ku.dku.repository.TxRepairNotificationRepository;
+
+@Service
+public class RepairService {
+	@Autowired private TxRepairNotificationRepository txRepairNotificationRepository;
+	@Autowired private MsRepairYearRepository msRepairYearRepository;
+	
+	public boolean repair(TxRepairNotification repairData) {
+	
+		TxRepairNotification txRepair = new TxRepairNotification();
+		txRepair.setRoomId(repairData.getRoomId());
+		txRepair.setRepairDate(repairData.getRepairDate());
+		txRepair.setStudentId(repairData.getStudentId());
+		txRepair.setStudentFname(repairData.getStudentFname());
+		txRepair.setStudentLname(repairData.getStudentLname());
+		txRepair.setRepairPhone(repairData.getRepairPhone());
+		txRepair.setRepairList(repairData.getRepairList());
+		txRepairNotificationRepository.save(txRepair);
+		
+		
+		return true;
+		
+	}
+	
+	
+	
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
+	public MsRepairYear getNextNumber(int curentYear) {
+		Date date = new Date();
+		String dateString = new SimpleDateFormat("yyy-MM-dd HH:mm:ss.SSS").format(date);
+		System.out.println("getNextNumber():Date=" + dateString);
+		MsRepairYear year = msRepairYearRepository.findByYear(curentYear);
+		if (year == null) {
+			year = new MsRepairYear();
+			year.setYear(curentYear);
+			year.setNumber(0);
+		}
+		System.out.println("getNextNumber(): get current number=" + year.getNumber());
+		int num = (year.getNumber() + 1);
+		year.setNumber(num);
+		year = msRepairYearRepository.save(year);
+		System.out.println("getNextNumber(): get number changed=" + year.getNumber());
+		return year;
+	}
+	
+	
+	
+	
+	public boolean createNo(long studentId) {
+		
+		
+		
+		
+		
+		return false;
+		
+	}
+}

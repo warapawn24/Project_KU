@@ -1,0 +1,5 @@
+package com.ku.dku.bean;
+
+public class ListRepairResponse {
+
+}

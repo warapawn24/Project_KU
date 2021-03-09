@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: dku-jpa
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: WIN10_Mall7
+Implementation-Vendor-Id: com.ku.dku
+Build-Jdk: 1.8.0_251
+Implementation-URL: http://projects.spring.io/spring-boot/dku-jpa/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

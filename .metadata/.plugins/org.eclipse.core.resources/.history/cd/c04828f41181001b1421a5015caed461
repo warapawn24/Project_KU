@@ -1,0 +1,31 @@
+package com.ku.dku.service;
+
+import javax.servlet.annotation.MultipartConfig;
+
+import org.springframework.stereotype.Service;
+
+@MultipartConfig(
+
+		maxFileSize = -1L, maxRequestSize = -1L)
+
+@Service
+public class FileService {
+
+	@Autowired
+	private FilesRepository filesRepository;
+
+	public Files store(MultipartFile file, long purchaseId) throws IOException {
+		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		Files files = new Files(fileName, file.getContentType(), file.getBytes(), purchaseId);
+
+		return filesRepository.save(files);
+	}
+
+	public Files getFile(long purchaseId) {
+		return filesRepository.findByPurchaseId(purchaseId);
+	}
+
+	public Stream<Files> getAllFiles() {
+		return filesRepository.findAll().stream();
+	}
+}

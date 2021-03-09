@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-reverse-engineering SYSTEM "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+ <schema-selection match-catalog="dku" match-schema="public" />
+ <type-mapping>
+  <sql-type jdbc-type="CHAR" hibernate-type="string" />
+  <sql-type jdbc-type="VARCHAR" hibernate-type="string" />
+  <sql-type jdbc-type="NUMERIC" hibernate-type="java.math.BigDecimal" />
+  <sql-type jdbc-type="INTEGER" hibernate-type="java.lang.Long" />
+  <sql-type jdbc-type="BIGINT" hibernate-type="java.lang.Long" />
+  <sql-type jdbc-type="DECIMAL" hibernate-type="java.math.BigDecimal" />
+ </type-mapping>
+ 
+ <table-filter match-name="DATABASECHANGELOG" exclude="true" />
+ <table-filter match-name="DATABASECHANGELOGLOCK" exclude="true" />
+ <table-filter match-name="databasechangelog" exclude="true" />
+ <table-filter match-name="databasechangeloglock" exclude="true" />
+ <!--
+ <table-filter match-name="PSP_SAM_STAFF" exclude="false" />
+ <table-filter match-name="PSP_SAM_TEAM" exclude="false" />
+ <table-filter match-name="PSP_MS_BRANCH" exclude="false" />
+ <table-filter match-name="*" exclude="true" />
+
+ <table name="PSP_SAM_STAFF" catalog="PSP_KTB_UAT" schema="dbo">
+  <foreign-key constraint-name="FK_PSP_SAM_STAFF_SAM_TEAM_ID" foreign-table="PSP_SAM_TEAM">
+   <column-ref local-column="SAM_TEAM_ID" foreign-column="REC_ID" />
+   <many-to-one property="samTeam" />
+  </foreign-key>
+
+  <foreign-key constraint-name="FK_PSP_SAM_STAFF_MS_BRANCH_ID" foreign-table="PSP_MS_BRANCH">
+   <column-ref local-column="MS_BRANCH_ID" foreign-column="REC_ID" />
+   <many-to-one property="msBranch" />
+  </foreign-key>
+ </table>
+ -->
+</hibernate-reverse-engineering>
