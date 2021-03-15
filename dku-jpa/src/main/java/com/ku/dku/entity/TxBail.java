@@ -56,11 +56,11 @@ public class TxBail  implements java.io.Serializable, BaseEntity {
     private String bailPhone;
     private String bailType;
     private String baillNote;
-    private Long year;
+    private Integer year;
     private String termName;
     private Date bailDate;
     private String bailEquipment;
-    private Long bailAccouctnum;
+    private String bailAccouctnum;
     private String bailBank;
     private Float bailCollateral;
     private Float bailWater;
@@ -74,7 +74,7 @@ public class TxBail  implements java.io.Serializable, BaseEntity {
     }
 
 
-    public TxBail(Long roomId, Long studentId, String studentFname, String studentLname, String bailPhone, String bailType, String baillNote, Long year, String termName, Date bailDate, String bailEquipment, Long bailAccouctnum, String bailBank, Float bailCollateral, Float bailWater, Float bailElectricbill, Float bailOther, Float bailPrice, Float bailTotal, String bailStatus) {
+    public TxBail(Long roomId, Long studentId, String studentFname, String studentLname, String bailPhone, String bailType, String baillNote, Integer year, String termName, Date bailDate, String bailEquipment, String bailAccouctnum, String bailBank, Float bailCollateral, Float bailWater, Float bailElectricbill, Float bailOther, Float bailPrice, Float bailTotal, String bailStatus) {
         this.roomId = roomId;
         this.studentId = studentId;
         this.studentFname = studentFname;
@@ -173,11 +173,11 @@ public class TxBail  implements java.io.Serializable, BaseEntity {
     }
     
     @Column(name="year")
-    public Long getYear() {
+    public Integer getYear() {
         return this.year;
     }
     
-    public void setYear(Long year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
     
@@ -210,11 +210,11 @@ public class TxBail  implements java.io.Serializable, BaseEntity {
     }
     
     @Column(name="bail_accouctnum")
-    public Long getBailAccouctnum() {
+    public String getBailAccouctnum() {
         return this.bailAccouctnum;
     }
     
-    public void setBailAccouctnum(Long bailAccouctnum) {
+    public void setBailAccouctnum(String bailAccouctnum) {
         this.bailAccouctnum = bailAccouctnum;
     }
     

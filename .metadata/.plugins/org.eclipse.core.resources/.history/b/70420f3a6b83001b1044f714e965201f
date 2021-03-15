@@ -1,0 +1,30 @@
+package com.ku.dku.bean;
+
+public class CreatebailRequest {
+	private long termId;
+	private Integer year;
+	
+	
+	public CreatebailRequest() {
+		super();
+	}
+	public CreatebailRequest(long termId, Integer year) {
+		super();
+		this.termId = termId;
+		this.year = year;
+	}
+	public long getTermId() {
+		return termId;
+	}
+	public void setTermId(long termId) {
+		this.termId = termId;
+	}
+	public Integer getYear() {
+		return year;
+	}
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+	
+	
+}

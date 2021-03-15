@@ -62,8 +62,8 @@ public class BookRooomService {
 			txReserveDetailRepository.save(txReserveDetail);
 			
 			TxStudent studentUpdate = txStudentRepository.findByStudentId(studentId);
-			String studentRoom = Long.toString(roomId);
-			studentUpdate.setStudentRoom(studentRoom);
+//			String studentRoom = Long.toString(roomId);
+			studentUpdate.setStudentRoom(roomId);
 			txStudentRepository.save(studentUpdate);
 			
 			msRoom.setRoomStatus(sumPeopele);

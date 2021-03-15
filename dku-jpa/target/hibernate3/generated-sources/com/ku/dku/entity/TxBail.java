@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Mar 10, 2021 2:42:40 AM by Hibernate Tools 3.2.2.GA
+// Generated Mar 15, 2021 7:14:33 PM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -60,7 +60,7 @@ public class TxBail  implements java.io.Serializable, BaseEntity {
     private String termName;
     private Date bailDate;
     private String bailEquipment;
-    private Long bailAccouctnum;
+    private String bailAccouctnum;
     private String bailBank;
     private Float bailCollateral;
     private Float bailWater;
@@ -74,7 +74,7 @@ public class TxBail  implements java.io.Serializable, BaseEntity {
     }
 
 
-    public TxBail(Long roomId, Long studentId, String studentFname, String studentLname, String bailPhone, String bailType, String baillNote, Long year, String termName, Date bailDate, String bailEquipment, Long bailAccouctnum, String bailBank, Float bailCollateral, Float bailWater, Float bailElectricbill, Float bailOther, Float bailPrice, Float bailTotal, String bailStatus) {
+    public TxBail(Long roomId, Long studentId, String studentFname, String studentLname, String bailPhone, String bailType, String baillNote, Long year, String termName, Date bailDate, String bailEquipment, String bailAccouctnum, String bailBank, Float bailCollateral, Float bailWater, Float bailElectricbill, Float bailOther, Float bailPrice, Float bailTotal, String bailStatus) {
         this.roomId = roomId;
         this.studentId = studentId;
         this.studentFname = studentFname;
@@ -210,11 +210,11 @@ public class TxBail  implements java.io.Serializable, BaseEntity {
     }
     
     @Column(name="bail_accouctnum")
-    public Long getBailAccouctnum() {
+    public String getBailAccouctnum() {
         return this.bailAccouctnum;
     }
     
-    public void setBailAccouctnum(Long bailAccouctnum) {
+    public void setBailAccouctnum(String bailAccouctnum) {
         this.bailAccouctnum = bailAccouctnum;
     }
     

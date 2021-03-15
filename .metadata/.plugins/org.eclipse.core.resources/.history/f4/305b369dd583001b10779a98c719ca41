@@ -1,0 +1,60 @@
+package com.ku.dku.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ku.dku.bean.CreateBailResponse;
+import com.ku.dku.bean.CreatebailRequest;
+import com.ku.dku.entity.LkTerm;
+import com.ku.dku.entity.TxBail;
+import com.ku.dku.repository.LkTermRepository;
+import com.ku.dku.repository.TxBailRepository;
+import com.ku.dku.service.BailService;
+
+@RestController
+@RequestMapping(value = "/user/bail")
+public class BailController {
+
+	@Autowired private BailService bilService;
+	@Autowired private TxBailRepository txBailRepository;
+	@Autowired private LkTermRepository lkTermRepository;
+	
+	@GetMapping(value = "/getTermsData")
+	public @ResponseBody Iterable<LkTerm> getTermsData(){
+		
+		Iterable<LkTerm> getData = bilService.getListTerm();
+		return getData;
+		
+	}
+	
+	@RequestMapping(value = "/createBail")
+	public @ResponseBody CreateBailResponse createBail(@RequestBody CreatebailRequest request) {
+		CreateBailResponse response = new CreateBailResponse();
+		
+		boolean create = bilService.createBail(request.getTermId(), request.getYear(), request.getStudentId());
+		
+		if (create) {
+			TxBail bail = txBailRepository.findByStudentId(request.getStudentId());
+			
+			LkTerm term = lkTermRepository.findByTermId(request.getTermId());
+			response.setBailId(bail.getRecId());
+			response.setBailDate(bail.getBailDate());
+			response.setRoomId(bail.getRoomId());
+			response.setStudenId(bail.getStudentId());
+			response.setStudentFname(bail.getStudentFname());
+			response.setStudentLname(bail.getStudentLname());
+			response.setTermName(term.getTermName());
+			response.setYear(bail.getYear());
+			response.setStatusResponse("success");
+		}else {
+			response.setStatusResponse("failed");
+		}
+		
+		return null;
+		
+	}
+}

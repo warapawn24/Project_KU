@@ -46,7 +46,7 @@ public class TxStudent  implements java.io.Serializable, BaseEntity {
     private String studentLname;
     private String studentEmail;
     private String studentFaculty;
-    private String studentRoom;
+    private Long studentRoom;
     private Long studentFail;
     private Date studentLogindate;
     private Long studentId;
@@ -57,7 +57,7 @@ public class TxStudent  implements java.io.Serializable, BaseEntity {
     }
 
 
-    public TxStudent(String studentUsername, String studentPassword, String studentFname, String studentLname, String studentEmail, String studentFaculty, String studentRoom, Long studentFail, Date studentLogindate, Long studentId, String facultyCode, String studentBranch) {
+    public TxStudent(String studentUsername, String studentPassword, String studentFname, String studentLname, String studentEmail, String studentFaculty, Long studentRoom, Long studentFail, Date studentLogindate, Long studentId, String facultyCode, String studentBranch) {
         this.studentUsername = studentUsername;
         this.studentPassword = studentPassword;
         this.studentFname = studentFname;
@@ -139,11 +139,11 @@ public class TxStudent  implements java.io.Serializable, BaseEntity {
     }
     
     @Column(name="student_room", length=20)
-    public String getStudentRoom() {
+    public Long getStudentRoom() {
         return this.studentRoom;
     }
     
-    public void setStudentRoom(String studentRoom) {
+    public void setStudentRoom(Long studentRoom) {
         this.studentRoom = studentRoom;
     }
     

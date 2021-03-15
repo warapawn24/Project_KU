@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Mar 10, 2021 2:42:40 AM by Hibernate Tools 3.2.2.GA
+// Generated Mar 15, 2021 7:14:33 PM by Hibernate Tools 3.2.2.GA
 
 
 import javax.persistence.Column;

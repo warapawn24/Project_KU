@@ -19,7 +19,7 @@ public class QTxBail extends EntityPathBase<TxBail> {
 
     public static final QTxBail txBail = new QTxBail("txBail");
 
-    public final NumberPath<Long> bailAccouctnum = createNumber("bailAccouctnum", Long.class);
+    public final StringPath bailAccouctnum = createString("bailAccouctnum");
 
     public final StringPath bailBank = createString("bailBank");
 
@@ -59,7 +59,7 @@ public class QTxBail extends EntityPathBase<TxBail> {
 
     public final StringPath termName = createString("termName");
 
-    public final NumberPath<Long> year = createNumber("year", Long.class);
+    public final NumberPath<Integer> year = createNumber("year", Integer.class);
 
     public QTxBail(String variable) {
         super(TxBail.class, forVariable(variable));

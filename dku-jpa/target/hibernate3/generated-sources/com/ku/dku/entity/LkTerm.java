@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Mar 10, 2021 2:42:40 AM by Hibernate Tools 3.2.2.GA
+// Generated Mar 15, 2021 7:14:33 PM by Hibernate Tools 3.2.2.GA
 
 
 import javax.persistence.Column;
@@ -27,14 +27,14 @@ public class LkTerm  implements java.io.Serializable, BaseEntity {
 
 
     private Long recId;
-    private Long termName;
+    private String termName;
     private Long termId;
 
     public LkTerm() {
     }
 
 
-    public LkTerm(Long termName, Long termId) {
+    public LkTerm(String termName, Long termId) {
         this.termName = termName;
         this.termId = termId;
     }
@@ -52,11 +52,11 @@ public class LkTerm  implements java.io.Serializable, BaseEntity {
     }
     
     @Column(name="term_name")
-    public Long getTermName() {
+    public String getTermName() {
         return this.termName;
     }
     
-    public void setTermName(Long termName) {
+    public void setTermName(String termName) {
         this.termName = termName;
     }
     

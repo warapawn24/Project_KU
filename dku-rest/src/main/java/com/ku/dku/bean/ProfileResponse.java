@@ -8,7 +8,7 @@ public class ProfileResponse {
 	private long studentId;
 	private long recId;
 	private String studentFaculty;
-	private String studentRoom;
+	private long studentRoom;
 	private String studentBranch;
 	private Date loginDate;
 	private String fileName;
@@ -20,7 +20,7 @@ public class ProfileResponse {
 		super();
 	}
 	public ProfileResponse(String studentFname, String studentLname, long studentId, long recId, String studentFaculty,
-			String studentRoom, String studentBranch, Date loginDate, String fileName, byte[] fileData) {
+			long studentRoom, String studentBranch, Date loginDate, String fileName, byte[] fileData) {
 		super();
 		this.studentFname = studentFname;
 		this.studentLname = studentLname;
@@ -63,10 +63,10 @@ public class ProfileResponse {
 	public void setStudentFaculty(String studentFaculty) {
 		this.studentFaculty = studentFaculty;
 	}
-	public String getStudentRoom() {
+	public long getStudentRoom() {
 		return studentRoom;
 	}
-	public void setStudentRoom(String studentRoom) {
+	public void setStudentRoom(long studentRoom) {
 		this.studentRoom = studentRoom;
 	}
 	public String getStudentBranch() {
