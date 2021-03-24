@@ -56,6 +56,7 @@ public class LoginController {
 			req.getSession().setAttribute("username", getTxStudent.getStudentUsername());
 			req.getSession().setAttribute("studentFname", getTxStudent.getStudentFname());
 			req.getSession().setAttribute("studentLname", getTxStudent.getStudentLname());
+			response.setStudentIdResponse(getTxStudent.getStudentId());
 			response.setStudentFnameResponse(getTxStudent.getStudentFname());
 			response.setStudentLnameResponse(getTxStudent.getStudentLname());
 			response.setStatusResponse("success");

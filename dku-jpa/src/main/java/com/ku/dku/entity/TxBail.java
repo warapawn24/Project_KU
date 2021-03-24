@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Feb 11, 2021 11:10:26 PM by Hibernate Tools 3.2.2.GA
+// Generated Mar 22, 2021 12:35:23 AM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -46,6 +46,7 @@ public class TxBail  implements java.io.Serializable, BaseEntity {
     public static final String P_BAILPRICE = "bailPrice";
     public static final String P_BAILTOTAL = "bailTotal";
     public static final String P_BAILSTATUS = "bailStatus";
+    public static final String P_BAILNOTATION = "bailNotation";
 
 
     private Long recId;
@@ -69,12 +70,16 @@ public class TxBail  implements java.io.Serializable, BaseEntity {
     private Float bailPrice;
     private Float bailTotal;
     private String bailStatus;
+    private String bailNotation;
 
     public TxBail() {
     }
 
+    public TxBail(String bailNotation) {
+        this.bailNotation = bailNotation;
+    }
 
-    public TxBail(Long roomId, Long studentId, String studentFname, String studentLname, String bailPhone, String bailType, String baillNote, Integer year, String termName, Date bailDate, String bailEquipment, String bailAccouctnum, String bailBank, Float bailCollateral, Float bailWater, Float bailElectricbill, Float bailOther, Float bailPrice, Float bailTotal, String bailStatus) {
+    public TxBail(Long roomId, Long studentId, String studentFname, String studentLname, String bailPhone, String bailType, String baillNote, Integer year, String termName, Date bailDate, String bailEquipment, String bailAccouctnum, String bailBank, Float bailCollateral, Float bailWater, Float bailElectricbill, Float bailOther, Float bailPrice, Float bailTotal, String bailStatus, String bailNotation) {
         this.roomId = roomId;
         this.studentId = studentId;
         this.studentFname = studentFname;
@@ -95,9 +100,10 @@ public class TxBail  implements java.io.Serializable, BaseEntity {
         this.bailPrice = bailPrice;
         this.bailTotal = bailTotal;
         this.bailStatus = bailStatus;
+        this.bailNotation = bailNotation;
     }
    
-    @Id
+    @Id 
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     
     @Column(name="rec_id", unique=true, nullable=false)
@@ -288,6 +294,15 @@ public class TxBail  implements java.io.Serializable, BaseEntity {
     
     public void setBailStatus(String bailStatus) {
         this.bailStatus = bailStatus;
+    }
+    
+    @Column(name="bail_notation", nullable=false)
+    public String getBailNotation() {
+        return this.bailNotation;
+    }
+    
+    public void setBailNotation(String bailNotation) {
+        this.bailNotation = bailNotation;
     }
 
 

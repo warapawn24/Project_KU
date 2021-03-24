@@ -8,13 +8,16 @@ public class RepairResponse {
 	private String studentFname;
 	private String studentLname;
 	private String statusResponse;
+	private long roomId;
+	
+	
 	
 	
 	public RepairResponse() {
 		super();
 	}
 	public RepairResponse(long repairId, long studentId, int year, int yearNumber, String studentFname,
-			String studentLname, String statusResponse) {
+			String studentLname, String statusResponse, long roomId) {
 		super();
 		this.repairId = repairId;
 		this.studentId = studentId;
@@ -23,6 +26,7 @@ public class RepairResponse {
 		this.studentFname = studentFname;
 		this.studentLname = studentLname;
 		this.statusResponse = statusResponse;
+		this.roomId = roomId;
 	}
 	public long getRepairId() {
 		return repairId;
@@ -66,6 +70,13 @@ public class RepairResponse {
 	public void setStatusResponse(String statusResponse) {
 		this.statusResponse = statusResponse;
 	}
+	public long getRoomId() {
+		return roomId;
+	}
+	public void setRoomId(long roomId) {
+		this.roomId = roomId;
+	}
+	
 	
 	
 	

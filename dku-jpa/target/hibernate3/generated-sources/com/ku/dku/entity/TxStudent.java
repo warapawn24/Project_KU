@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Mar 15, 2021 7:14:33 PM by Hibernate Tools 3.2.2.GA
+// Generated Mar 22, 2021 12:35:23 AM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -37,6 +37,7 @@ public class TxStudent  implements java.io.Serializable, BaseEntity {
     public static final String P_STUDENTID = "studentId";
     public static final String P_FACULTYCODE = "facultyCode";
     public static final String P_STUDENTBRANCH = "studentBranch";
+    public static final String P_STUDENTSTATUS = "studentStatus";
 
 
     private Long recId;
@@ -52,12 +53,16 @@ public class TxStudent  implements java.io.Serializable, BaseEntity {
     private Long studentId;
     private String facultyCode;
     private String studentBranch;
+    private String studentStatus;
 
     public TxStudent() {
     }
 
+    public TxStudent(String studentStatus) {
+        this.studentStatus = studentStatus;
+    }
 
-    public TxStudent(String studentUsername, String studentPassword, String studentFname, String studentLname, String studentEmail, String studentFaculty, Long studentRoom, Long studentFail, Date studentLogindate, Long studentId, String facultyCode, String studentBranch) {
+    public TxStudent(String studentUsername, String studentPassword, String studentFname, String studentLname, String studentEmail, String studentFaculty, Long studentRoom, Long studentFail, Date studentLogindate, Long studentId, String facultyCode, String studentBranch, String studentStatus) {
         this.studentUsername = studentUsername;
         this.studentPassword = studentPassword;
         this.studentFname = studentFname;
@@ -70,6 +75,7 @@ public class TxStudent  implements java.io.Serializable, BaseEntity {
         this.studentId = studentId;
         this.facultyCode = facultyCode;
         this.studentBranch = studentBranch;
+        this.studentStatus = studentStatus;
     }
    
     @Id @GeneratedValue(strategy=IDENTITY)
@@ -190,6 +196,15 @@ public class TxStudent  implements java.io.Serializable, BaseEntity {
     
     public void setStudentBranch(String studentBranch) {
         this.studentBranch = studentBranch;
+    }
+    
+    @Column(name="student_status", nullable=false)
+    public String getStudentStatus() {
+        return this.studentStatus;
+    }
+    
+    public void setStudentStatus(String studentStatus) {
+        this.studentStatus = studentStatus;
     }
 
 

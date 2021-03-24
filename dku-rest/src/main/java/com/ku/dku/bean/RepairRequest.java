@@ -8,7 +8,6 @@ public class RepairRequest {
 	private long studentId;
 	private String studentFname;
 	private String studentLname;
-	private Date repairDate;
 	private String repairPhone;
 	private String repairList;
 	
@@ -16,14 +15,13 @@ public class RepairRequest {
 	public RepairRequest() {
 		super();
 	}
-	public RepairRequest(long roomId, long studentId, String studentFname, String studentLname, Date repairDate,
-			String repairPhone, String repairList) {
+	public RepairRequest(long roomId, long studentId, String studentFname, String studentLname, String repairPhone,
+			String repairList) {
 		super();
 		this.roomId = roomId;
 		this.studentId = studentId;
 		this.studentFname = studentFname;
 		this.studentLname = studentLname;
-		this.repairDate = repairDate;
 		this.repairPhone = repairPhone;
 		this.repairList = repairList;
 	}
@@ -51,12 +49,6 @@ public class RepairRequest {
 	public void setStudentLname(String studentLname) {
 		this.studentLname = studentLname;
 	}
-	public Date getRepairDate() {
-		return repairDate;
-	}
-	public void setRepairDate(Date repairDate) {
-		this.repairDate = repairDate;
-	}
 	public String getRepairPhone() {
 		return repairPhone;
 	}
@@ -69,6 +61,8 @@ public class RepairRequest {
 	public void setRepairList(String repairList) {
 		this.repairList = repairList;
 	}
+	
+	
 	
 	
 	

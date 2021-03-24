@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.ku.dku.bean.ListBailEquipmentRequest;
 import com.ku.dku.bean.ListBailTypeRequest;
+import com.ku.dku.constant.LookupConstant;
 import com.ku.dku.entity.LkTerm;
 import com.ku.dku.entity.TxBail;
 import com.ku.dku.entity.TxBailEquipment;
@@ -38,25 +39,32 @@ public class BailService {
 		
 	}
 	
-	public boolean createBail(long termId,int year,long studentId) {
+	public boolean createBail(long studentId) {
 		
 		long millies = System.currentTimeMillis();
 		Date date = new Date(millies);
 		
-		LkTerm term = lkTermRepository.findByTermId(termId);
+		TxBail bail = new TxBail();
+			
+		TxBail txBail = txBailRepository.findByStudentId(studentId);
+		
+		if (txBail == null) {
+			
 		
 		TxStudent student = txStudentRepository.findByStudentId(studentId);
-		
 		//create
-		TxBail bail = new TxBail();
 		bail.setBailDate(date);
-		bail.setTermName(term.getTermName());
-		bail.setYear(year);
 		bail.setStudentId(studentId);
 		bail.setStudentFname(student.getStudentFname());
 		bail.setStudentLname(student.getStudentLname());
 		bail.setRoomId(student.getStudentRoom());
+		bail.setBailStatus(LookupConstant.BAIL_STATUS_ALREADYDONE);
 		txBailRepository.save(bail);
+		
+		}else {
+			bail.setBailStatus(LookupConstant.BAIL_STATUS_ALREADYDONE);
+		}
+		
 		
 	
 		return true;
@@ -73,7 +81,9 @@ public class BailService {
 //		addData.setBailEquipment(bail.getBailEquipment());
 		addData.setBailAccouctnum(bail.getBailAccouctnum());
 		addData.setBailBank(bail.getBailBank());
-		addData.setBailStatus("waitting");
+		addData.setTermName(bail.getTermName());
+		addData.setYear(bail.getYear());
+		addData.setBailStatus(LookupConstant.BAIL_STATUS_WAITING);
 		txBailRepository.save(addData);
 		
 		//AddDetail
@@ -103,4 +113,15 @@ public class BailService {
 		
 	}
 	
+	public boolean detailBail(long studentId) {
+		
+		TxBail txBail = txBailRepository.findByStudentId(studentId);
+		
+		if (txBail.getBailStatus().equals(LookupConstant.BAIL_STATUS_WAITING)) {
+			
+		}
+		
+		return false;
+		
+	}
 }

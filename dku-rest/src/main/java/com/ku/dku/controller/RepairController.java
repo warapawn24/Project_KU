@@ -53,6 +53,7 @@ public class RepairController {
 			TxRepairNotification getData = txRepairNotificationRepository.findByStudentId(request.getStudentId());
 			response.setRepairId(getData.getRecId());
 			response.setStudentId(getData.getStudentId());
+			response.setRoomId(getStudent.getStudentRoom());
 			response.setYear(getData.getYear());
 			response.setYearNumber(getData.getYearNumber());
 			response.setStudentFname(getStudent.getStudentFname());
@@ -78,7 +79,6 @@ public class RepairController {
 		txRepairNotification.setStudentId(request.getStudentId());
 		txRepairNotification.setStudentFname(request.getStudentFname());
 		txRepairNotification.setStudentLname(request.getStudentLname());
-		txRepairNotification.setRepairDate(request.getRepairDate());
 		txRepairNotification.setRepairPhone(request.getRepairPhone());
 		txRepairNotification.setRepairList(request.getRepairList());
 		boolean repair = repairService.repair(txRepairNotification);

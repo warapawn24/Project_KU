@@ -1,7 +1,7 @@
 package com.ku.dku.bean;
 
 public class LoginResponse {
-	
+	private long studentIdResponse;
 	private String studentFnameResponse;
 	private String studentLnameResponse;
 	private String statusResponse;
@@ -9,17 +9,25 @@ public class LoginResponse {
 	private byte[] fileData;
 	
 	
+	
 	public LoginResponse() {
 		super();
 	}
-	public LoginResponse(String studentFnameResponse, String studentLnameResponse, String statusResponse,
-			String fileName, byte[] fileData) {
+	public LoginResponse(long studentIdResponse, String studentFnameResponse, String studentLnameResponse,
+			String statusResponse, String fileName, byte[] fileData) {
 		super();
+		this.studentIdResponse = studentIdResponse;
 		this.studentFnameResponse = studentFnameResponse;
 		this.studentLnameResponse = studentLnameResponse;
 		this.statusResponse = statusResponse;
 		this.fileName = fileName;
 		this.fileData = fileData;
+	}
+	public long getStudentIdResponse() {
+		return studentIdResponse;
+	}
+	public void setStudentIdResponse(long studentIdResponse) {
+		this.studentIdResponse = studentIdResponse;
 	}
 	public String getStudentFnameResponse() {
 		return studentFnameResponse;
@@ -53,9 +61,6 @@ public class LoginResponse {
 	}
 	
 	
-
-	
-
 	
 	
 	

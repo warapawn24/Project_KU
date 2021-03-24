@@ -8,9 +8,8 @@ public class CreateBailResponse {
 	private long roomId;
 	private String studentFname;
 	private String studentLname;
-	private String termName;
-	private Integer year;
 	private Date bailDate;
+	private String bailStatus;
 	private String statusResponse;
 	
 	
@@ -18,16 +17,15 @@ public class CreateBailResponse {
 		super();
 	}
 	public CreateBailResponse(long bailId, long studenId, long roomId, String studentFname, String studentLname,
-			String termName, Integer year, Date bailDate, String statusResponse) {
+			Date bailDate, String bailStatus, String statusResponse) {
 		super();
 		this.bailId = bailId;
 		this.studenId = studenId;
 		this.roomId = roomId;
 		this.studentFname = studentFname;
 		this.studentLname = studentLname;
-		this.termName = termName;
-		this.year = year;
 		this.bailDate = bailDate;
+		this.bailStatus = bailStatus;
 		this.statusResponse = statusResponse;
 	}
 	public long getBailId() {
@@ -60,23 +58,17 @@ public class CreateBailResponse {
 	public void setStudentLname(String studentLname) {
 		this.studentLname = studentLname;
 	}
-	public String getTermName() {
-		return termName;
-	}
-	public void setTermName(String termName) {
-		this.termName = termName;
-	}
-	public Integer getYear() {
-		return year;
-	}
-	public void setYear(Integer year) {
-		this.year = year;
-	}
 	public Date getBailDate() {
 		return bailDate;
 	}
 	public void setBailDate(Date bailDate) {
 		this.bailDate = bailDate;
+	}
+	public String getBailStatus() {
+		return bailStatus;
+	}
+	public void setBailStatus(String bailStatus) {
+		this.bailStatus = bailStatus;
 	}
 	public String getStatusResponse() {
 		return statusResponse;
@@ -84,9 +76,6 @@ public class CreateBailResponse {
 	public void setStatusResponse(String statusResponse) {
 		this.statusResponse = statusResponse;
 	}
-	
-	
-	
 	
 	
 	

@@ -1,0 +1,25 @@
+package com.ku.dku.bean;
+
+public class BailAmountResponse {
+	private float bailAmount;
+
+	
+	public BailAmountResponse() {
+		super();
+	}
+
+	public BailAmountResponse(float bailAmount) {
+		super();
+		this.bailAmount = bailAmount;
+	}
+
+	public float getBailAmount() {
+		return bailAmount;
+	}
+
+	public void setBailAmount(float bailAmount) {
+		this.bailAmount = bailAmount;
+	}
+	
+	
+}

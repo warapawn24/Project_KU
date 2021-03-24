@@ -33,6 +33,8 @@ public class QTxBail extends EntityPathBase<TxBail> {
 
     public final StringPath baillNote = createString("baillNote");
 
+    public final StringPath bailNotation = createString("bailNotation");
+
     public final NumberPath<Float> bailOther = createNumber("bailOther", Float.class);
 
     public final StringPath bailPhone = createString("bailPhone");

@@ -26,10 +26,9 @@ public class RepairService {
 	
 	public boolean repair(TxRepairNotification repairData) {
 	
-		TxRepairNotification txRepair = new TxRepairNotification();
+		
+		TxRepairNotification txRepair = txRepairNotificationRepository.findByStudentId(repairData.getStudentId());
 		txRepair.setRoomId(repairData.getRoomId());
-		txRepair.setRepairDate(repairData.getRepairDate());
-		txRepair.setStudentId(repairData.getStudentId());
 		txRepair.setStudentFname(repairData.getStudentFname());
 		txRepair.setStudentLname(repairData.getStudentLname());
 		txRepair.setRepairPhone(repairData.getRepairPhone());

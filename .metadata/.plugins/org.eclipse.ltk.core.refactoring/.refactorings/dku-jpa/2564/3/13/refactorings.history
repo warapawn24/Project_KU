@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;TxBail.java&apos; to &apos;dku-jpa/src/main/java/com.ku.dku.entity&apos;&#x0D;&#x0A;- Original project: &apos;dku-jpa&apos;&#x0D;&#x0A;- Destination element: &apos;dku-jpa/src/main/java/com.ku.dku.entity&apos;&#x0D;&#x0A;- Original element: &apos;TxBail.java&apos;" description="Copy file" destination="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.ku.dku.entity" element1="target/hibernate3/generated-sources/com/ku/dku/entity/TxBail.java" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1616348386298" units="0" version="1.0"/>
+</session>
