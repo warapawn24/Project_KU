@@ -1,0 +1,16 @@
+package com.ku.dku.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.ku.dku.entity.TxUtilityBill;
+
+public interface TxUtilityBillRepository extends JpaRepository<TxUtilityBill,Long> {
+
+	TxUtilityBill findByRecId(long recId);
+	
+	@Query(value = "SELECT top 3 * " + "FROM tx_utility_bill " + "WHERE " + "student_id = :studentId " + "ORDER BY "
+			+ "rec_id DESC ", nativeQuery = true)
+	Iterable<TxUtilityBill> TopStudentIdOrderByRecIdDESC(@Param("studentId") long studentId);
+}

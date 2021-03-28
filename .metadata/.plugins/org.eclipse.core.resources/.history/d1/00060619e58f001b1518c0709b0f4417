@@ -1,0 +1,40 @@
+package com.ku.dku.bean;
+
+public class ListLastUtilityBillThreeResponse {
+	
+	private String utilityDateRetroact;
+	private Float utilityTotalRetroact;
+	private String utilityStatusRetroact;
+	
+	
+	public ListLastUtilityBillThreeResponse() {
+		super();
+	}
+	public ListLastUtilityBillThreeResponse(String utilityDateRetroact, Float utilityTotalRetroact,
+			String utilityStatusRetroact) {
+		super();
+		this.utilityDateRetroact = utilityDateRetroact;
+		this.utilityTotalRetroact = utilityTotalRetroact;
+		this.utilityStatusRetroact = utilityStatusRetroact;
+	}
+	public String getUtilityDateRetroact() {
+		return utilityDateRetroact;
+	}
+	public void setUtilityDateRetroact(String utilityDateRetroact) {
+		this.utilityDateRetroact = utilityDateRetroact;
+	}
+	public Float getUtilityTotalRetroact() {
+		return utilityTotalRetroact;
+	}
+	public void setUtilityTotalRetroact(Float utilityTotalRetroact) {
+		this.utilityTotalRetroact = utilityTotalRetroact;
+	}
+	public String getUtilityStatusRetroact() {
+		return utilityStatusRetroact;
+	}
+	public void setUtilityStatusRetroact(String utilityStatusRetroact) {
+		this.utilityStatusRetroact = utilityStatusRetroact;
+	}
+	
+	
+}
