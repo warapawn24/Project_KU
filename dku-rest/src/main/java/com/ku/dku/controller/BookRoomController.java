@@ -12,11 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ku.dku.bean.BookRoomRequest;
 import com.ku.dku.bean.BookRoomResponse;
+import com.ku.dku.bean.CheckStatusResponse;
+import com.ku.dku.bean.CheckStatusStudentRequest;
 import com.ku.dku.bean.ListBuildingDataResponse;
 import com.ku.dku.bean.ListFloorByBuildingResponse;
 import com.ku.dku.bean.RoomDataRequest;
 import com.ku.dku.bean.RoomDataResponse;
+import com.ku.dku.bean.checkStatusStudentResponse;
 import com.ku.dku.entity.MsBuilding;
+import com.ku.dku.entity.TxSetDate;
+import com.ku.dku.entity.TxStudent;
 import com.ku.dku.repository.MsBuildingRepository;
 import com.ku.dku.service.BookRooomService;
 import com.ku.dku.service.BuildingService;
@@ -85,6 +90,27 @@ public class BookRoomController {
 			response.setStatusResponse("failed");
 		}
 		return response;
+	}
+	
+	
+	//checkStatus
+	@RequestMapping(value = "/checkStatusStudent",method = RequestMethod.POST)
+	public @ResponseBody checkStatusStudentResponse checkStatusStudent(@RequestBody CheckStatusStudentRequest request) {
+		checkStatusStudentResponse response = new checkStatusStudentResponse();
+		
+		TxStudent student = bookRooomService.findByStudentId(request.getStudentId());
+		
+		response.setStudentId(student.getStudentId());
+		response.setStudentStatus(student.getStudentStatus());
+		
+		TxSetDate setDate = bookRooomService.TopDateData();
+		
+		response.setStartDate(setDate.getSetReserveStart());
+		response.setEndDate(setDate.getSetReserveDue());
+		
+		
+		return response;
+		
 	}
 	
 }

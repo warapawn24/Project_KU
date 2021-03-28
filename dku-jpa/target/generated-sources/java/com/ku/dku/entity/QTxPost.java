@@ -19,9 +19,11 @@ public class QTxPost extends EntityPathBase<TxPost> {
 
     public static final QTxPost txPost = new QTxPost("txPost");
 
-    public final NumberPath<Long> postCode = createNumber("postCode", Long.class);
+    public final StringPath postCode = createString("postCode");
 
     public final DateTimePath<java.util.Date> postDate = createDateTime("postDate", java.util.Date.class);
+
+    public final DateTimePath<java.util.Date> postRecivedate = createDateTime("postRecivedate", java.util.Date.class);
 
     public final StringPath postStatus = createString("postStatus");
 
@@ -34,6 +36,8 @@ public class QTxPost extends EntityPathBase<TxPost> {
     public final NumberPath<Long> studentId = createNumber("studentId", Long.class);
 
     public final StringPath studentLname = createString("studentLname");
+
+    public final NumberPath<Integer> year = createNumber("year", Integer.class);
 
     public QTxPost(String variable) {
         super(TxPost.class, forVariable(variable));

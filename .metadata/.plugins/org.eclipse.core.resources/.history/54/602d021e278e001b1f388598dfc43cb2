@@ -1,0 +1,9 @@
+package com.ku.dku.bean;
+
+import java.util.Date;
+
+public class checkStatusStudentResponse {
+	private String studentStatus;
+	private Date startDate;
+	private Date endDate;
+}

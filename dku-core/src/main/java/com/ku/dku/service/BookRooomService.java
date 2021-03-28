@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import com.ku.dku.entity.MsRoom;
 import com.ku.dku.entity.TxReserve;
 import com.ku.dku.entity.TxReserveDetail;
+import com.ku.dku.entity.TxSetDate;
 import com.ku.dku.entity.TxStudent;
 import com.ku.dku.repository.MsBuildingRepository;
 import com.ku.dku.repository.MsRoomRepository;
 import com.ku.dku.repository.TxReserveDetailRepository;
 import com.ku.dku.repository.TxReserveRepository;
+import com.ku.dku.repository.TxSetDateRepository;
 import com.ku.dku.repository.TxStudentRepository;
 
 @Service
@@ -23,6 +25,7 @@ public class BookRooomService {
 	@Autowired private TxReserveDetailRepository txReserveDetailRepository;
 	@Autowired private TxReserveRepository txReserveRepository;
 	@Autowired private TxStudentRepository txStudentRepository;
+	@Autowired private TxSetDateRepository txSetDateRepository;
 	
 	public boolean bookRoom(long roomId,long studentId) {
 		MsRoom msRoom = msRoomRepository.findByRoomId(roomId);
@@ -76,7 +79,25 @@ public class BookRooomService {
 		return true;
 		}
 	
-		
 	
-
+	
+		//ส่งStatusและระยะเวลาจองหอ
+	public boolean checkStatusStudent(long studentId) {
+		
+		TxStudent student = txStudentRepository.findByStudentId(studentId);
+		
+		
+		
+		return true;
+		
+	}
+	
+	public TxSetDate TopDateData() {
+		return txSetDateRepository.TopTxSetDateOrderByRecIdDESC();
+		
+	}
+	
+	public TxStudent findByStudentId(long studentId) {
+		return txStudentRepository.findByStudentId(studentId);
+	}
 }

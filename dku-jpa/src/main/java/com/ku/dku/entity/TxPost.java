@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Feb 11, 2021 11:10:26 PM by Hibernate Tools 3.2.2.GA
+// Generated Mar 28, 2021 1:58:24 PM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -33,22 +33,26 @@ public class TxPost  implements java.io.Serializable, BaseEntity {
     public static final String P_POSTDATE = "postDate";
     public static final String P_POSTTYPE = "postType";
     public static final String P_POSTSTATUS = "postStatus";
+    public static final String P_YEAR = "year";
+    public static final String P_POSTRECIVEDATE = "postRecivedate";
 
 
     private Long recId;
-    private Long postCode;
+    private String postCode;
     private Long studentId;
     private String studentFname;
     private String studentLname;
     private Date postDate;
     private String postType;
     private String postStatus;
+    private Integer year;
+    private Date postRecivedate;
 
     public TxPost() {
     }
 
 
-    public TxPost(Long postCode, Long studentId, String studentFname, String studentLname, Date postDate, String postType, String postStatus) {
+    public TxPost(String postCode, Long studentId, String studentFname, String studentLname, Date postDate, String postType, String postStatus, Integer year, Date postRecivedate) {
         this.postCode = postCode;
         this.studentId = studentId;
         this.studentFname = studentFname;
@@ -56,9 +60,11 @@ public class TxPost  implements java.io.Serializable, BaseEntity {
         this.postDate = postDate;
         this.postType = postType;
         this.postStatus = postStatus;
+        this.year = year;
+        this.postRecivedate = postRecivedate;
     }
    
-    @Id
+    @Id 
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     
     @Column(name="rec_id", unique=true, nullable=false)
@@ -71,11 +77,11 @@ public class TxPost  implements java.io.Serializable, BaseEntity {
     }
     
     @Column(name="post_code")
-    public Long getPostCode() {
+    public String getPostCode() {
         return this.postCode;
     }
     
-    public void setPostCode(Long postCode) {
+    public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
     
@@ -132,6 +138,24 @@ public class TxPost  implements java.io.Serializable, BaseEntity {
     
     public void setPostStatus(String postStatus) {
         this.postStatus = postStatus;
+    }
+    
+    @Column(name="year")
+    public Integer getYear() {
+        return this.year;
+    }
+    
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="post_recivedate", length=19)
+    public Date getPostRecivedate() {
+        return this.postRecivedate;
+    }
+    
+    public void setPostRecivedate(Date postRecivedate) {
+        this.postRecivedate = postRecivedate;
     }
 
 

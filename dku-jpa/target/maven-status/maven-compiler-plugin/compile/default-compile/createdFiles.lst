@@ -17,6 +17,7 @@ com\ku\dku\entity\QMsFile.class
 com\ku\dku\entity\QMsRoom.class
 com\ku\dku\entity\QTxRepairNotification.class
 com\ku\dku\entity\QMsBuilding.class
+com\ku\dku\entity\QTxSetDate.class
 com\ku\dku\entity\QTxReserveDetail.class
 com\ku\dku\entity\QLkFloor.class
 com\ku\dku\entity\QTxSecurity.class

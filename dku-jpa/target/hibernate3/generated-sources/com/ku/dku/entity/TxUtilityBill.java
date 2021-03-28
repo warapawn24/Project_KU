@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Mar 22, 2021 12:35:23 AM by Hibernate Tools 3.2.2.GA
+// Generated Mar 28, 2021 1:58:24 PM by Hibernate Tools 3.2.2.GA
 
 
 import javax.persistence.Column;
@@ -33,6 +33,8 @@ public class TxUtilityBill  implements java.io.Serializable, BaseEntity {
     public static final String P_UTILITYELECTRICBILL = "utilityElectricbill";
     public static final String P_UTILITYFINES = "utilityFines";
     public static final String P_UTILITYTOTAL = "utilityTotal";
+    public static final String P_UTILITYSTARTDATE = "utilityStartdate";
+    public static final String P_UTILITYSTATUS = "utilityStatus";
 
 
     private Long recId;
@@ -46,12 +48,18 @@ public class TxUtilityBill  implements java.io.Serializable, BaseEntity {
     private Float utilityElectricbill;
     private Float utilityFines;
     private Float utilityTotal;
+    private String utilityStartdate;
+    private String utilityStatus;
 
     public TxUtilityBill() {
     }
 
+    public TxUtilityBill(String utilityStartdate, String utilityStatus) {
+        this.utilityStartdate = utilityStartdate;
+        this.utilityStatus = utilityStatus;
+    }
 
-    public TxUtilityBill(Long roomId, Long studentId, String studentFname, String studentLname, String utilityDate, String utilityDuedate, Float utilityWater, Float utilityElectricbill, Float utilityFines, Float utilityTotal) {
+    public TxUtilityBill(Long roomId, Long studentId, String studentFname, String studentLname, String utilityDate, String utilityDuedate, Float utilityWater, Float utilityElectricbill, Float utilityFines, Float utilityTotal, String utilityStartdate, String utilityStatus) {
         this.roomId = roomId;
         this.studentId = studentId;
         this.studentFname = studentFname;
@@ -62,6 +70,8 @@ public class TxUtilityBill  implements java.io.Serializable, BaseEntity {
         this.utilityElectricbill = utilityElectricbill;
         this.utilityFines = utilityFines;
         this.utilityTotal = utilityTotal;
+        this.utilityStartdate = utilityStartdate;
+        this.utilityStatus = utilityStatus;
     }
    
     @Id @GeneratedValue(strategy=IDENTITY)
@@ -165,6 +175,24 @@ public class TxUtilityBill  implements java.io.Serializable, BaseEntity {
     
     public void setUtilityTotal(Float utilityTotal) {
         this.utilityTotal = utilityTotal;
+    }
+    
+    @Column(name="utility_startdate", nullable=false)
+    public String getUtilityStartdate() {
+        return this.utilityStartdate;
+    }
+    
+    public void setUtilityStartdate(String utilityStartdate) {
+        this.utilityStartdate = utilityStartdate;
+    }
+    
+    @Column(name="utility_status", nullable=false)
+    public String getUtilityStatus() {
+        return this.utilityStatus;
+    }
+    
+    public void setUtilityStatus(String utilityStatus) {
+        this.utilityStatus = utilityStatus;
     }
 
 

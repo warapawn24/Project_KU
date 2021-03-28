@@ -37,6 +37,10 @@ public class QTxUtilityBill extends EntityPathBase<TxUtilityBill> {
 
     public final NumberPath<Float> utilityFines = createNumber("utilityFines", Float.class);
 
+    public final StringPath utilityStartdate = createString("utilityStartdate");
+
+    public final StringPath utilityStatus = createString("utilityStatus");
+
     public final NumberPath<Float> utilityTotal = createNumber("utilityTotal", Float.class);
 
     public final NumberPath<Float> utilityWater = createNumber("utilityWater", Float.class);
