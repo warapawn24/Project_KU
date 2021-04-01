@@ -41,6 +41,8 @@ public class QTxStudent extends EntityPathBase<TxStudent> {
 
     public final StringPath studentPassword = createString("studentPassword");
 
+    public final StringPath studentPhone = createString("studentPhone");
+
     public final NumberPath<Long> studentRoom = createNumber("studentRoom", Long.class);
 
     public final StringPath studentStatus = createString("studentStatus");

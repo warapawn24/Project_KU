@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Mar 28, 2021 1:58:24 PM by Hibernate Tools 3.2.2.GA
+// Generated Apr 2, 2021 3:44:30 AM by Hibernate Tools 3.2.2.GA
 
 
 import javax.persistence.Column;
@@ -26,6 +26,7 @@ public class MsBuildingOne  implements java.io.Serializable, BaseEntity {
     public static final String P_FLOORID = "floorId";
     public static final String P_BUILDINGID = "buildingId";
     public static final String P_NUMBER = "number";
+    public static final String P_BUILDINGTOTAL = "buildingTotal";
 
 
     private Long recId;
@@ -33,16 +34,18 @@ public class MsBuildingOne  implements java.io.Serializable, BaseEntity {
     private Long floorId;
     private Long buildingId;
     private Long number;
+    private Long buildingTotal;
 
     public MsBuildingOne() {
     }
 
 
-    public MsBuildingOne(Long roomId, Long floorId, Long buildingId, Long number) {
+    public MsBuildingOne(Long roomId, Long floorId, Long buildingId, Long number, Long buildingTotal) {
         this.roomId = roomId;
         this.floorId = floorId;
         this.buildingId = buildingId;
         this.number = number;
+        this.buildingTotal = buildingTotal;
     }
    
     @Id @GeneratedValue(strategy=IDENTITY)
@@ -91,6 +94,15 @@ public class MsBuildingOne  implements java.io.Serializable, BaseEntity {
     
     public void setNumber(Long number) {
         this.number = number;
+    }
+    
+    @Column(name="building_total", nullable=false)
+    public Long getBuildingTotal() {
+        return this.buildingTotal;
+    }
+    
+    public void setBuildingTotal(Long buildingTotal) {
+        this.buildingTotal = buildingTotal;
     }
 
 

@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Mar 20, 2021 11:00:54 PM by Hibernate Tools 3.2.2.GA
+// Generated Apr 2, 2021 3:44:30 AM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -38,6 +38,7 @@ public class TxStudent  implements java.io.Serializable, BaseEntity {
     public static final String P_FACULTYCODE = "facultyCode";
     public static final String P_STUDENTBRANCH = "studentBranch";
     public static final String P_STUDENTSTATUS = "studentStatus";
+    public static final String P_STUDENTPHONE = "studentPhone";
 
 
     private Long recId;
@@ -54,15 +55,17 @@ public class TxStudent  implements java.io.Serializable, BaseEntity {
     private String facultyCode;
     private String studentBranch;
     private String studentStatus;
+    private String studentPhone;
 
     public TxStudent() {
     }
 
-    public TxStudent(String studentStatus) {
+    public TxStudent(String studentStatus, String studentPhone) {
         this.studentStatus = studentStatus;
+        this.studentPhone = studentPhone;
     }
 
-    public TxStudent(String studentUsername, String studentPassword, String studentFname, String studentLname, String studentEmail, String studentFaculty, Long studentRoom, Long studentFail, Date studentLogindate, Long studentId, String facultyCode, String studentBranch, String studentStatus) {
+    public TxStudent(String studentUsername, String studentPassword, String studentFname, String studentLname, String studentEmail, String studentFaculty, Long studentRoom, Long studentFail, Date studentLogindate, Long studentId, String facultyCode, String studentBranch, String studentStatus, String studentPhone) {
         this.studentUsername = studentUsername;
         this.studentPassword = studentPassword;
         this.studentFname = studentFname;
@@ -76,6 +79,7 @@ public class TxStudent  implements java.io.Serializable, BaseEntity {
         this.facultyCode = facultyCode;
         this.studentBranch = studentBranch;
         this.studentStatus = studentStatus;
+        this.studentPhone = studentPhone;
     }
    
     @Id 
@@ -205,6 +209,15 @@ public class TxStudent  implements java.io.Serializable, BaseEntity {
     
     public void setStudentStatus(String studentStatus) {
         this.studentStatus = studentStatus;
+    }
+    
+    @Column(name="student_phone", nullable=false)
+    public String getStudentPhone() {
+        return this.studentPhone;
+    }
+    
+    public void setStudentPhone(String studentPhone) {
+        this.studentPhone = studentPhone;
     }
 
 

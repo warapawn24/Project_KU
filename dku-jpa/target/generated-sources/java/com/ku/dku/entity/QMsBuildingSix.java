@@ -21,6 +21,8 @@ public class QMsBuildingSix extends EntityPathBase<MsBuildingSix> {
 
     public final NumberPath<Long> buildingId = createNumber("buildingId", Long.class);
 
+    public final NumberPath<Integer> buildingTotal = createNumber("buildingTotal", Integer.class);
+
     public final NumberPath<Long> floorId = createNumber("floorId", Long.class);
 
     public final NumberPath<Integer> number = createNumber("number", Integer.class);

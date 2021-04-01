@@ -12,4 +12,7 @@ public class LookupConstant {
 	public static String POST_STATUS_RECEIVED = "received";
 	public static String POST_STATUS_NOTRECEIVE = "not receive";
 	
+	//lk_status
+	public static String LK_STATUS_ACTIVE = "active";
+	public static String LK_STATUS_RESIGN = "resign";
 }

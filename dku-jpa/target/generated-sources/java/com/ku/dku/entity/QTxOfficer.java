@@ -21,7 +21,7 @@ public class QTxOfficer extends EntityPathBase<TxOfficer> {
 
     public final StringPath officerEmail = createString("officerEmail");
 
-    public final NumberPath<Long> officerFail = createNumber("officerFail", Long.class);
+    public final NumberPath<Integer> officerFail = createNumber("officerFail", Integer.class);
 
     public final StringPath officerFname = createString("officerFname");
 
@@ -31,13 +31,13 @@ public class QTxOfficer extends EntityPathBase<TxOfficer> {
 
     public final DateTimePath<java.util.Date> officerLogindate = createDateTime("officerLogindate", java.util.Date.class);
 
-    public final NumberPath<Long> officerLoginfirstchange = createNumber("officerLoginfirstchange", Long.class);
+    public final NumberPath<Integer> officerLoginfirstchange = createNumber("officerLoginfirstchange", Integer.class);
 
-    public final NumberPath<Long> officerOtp = createNumber("officerOtp", Long.class);
+    public final StringPath officerOtp = createString("officerOtp");
 
     public final StringPath officerPassword = createString("officerPassword");
 
-    public final StringPath officerRole = createString("officerRole");
+    public final NumberPath<Long> officerRoleId = createNumber("officerRoleId", Long.class);
 
     public final StringPath officerStatus = createString("officerStatus");
 

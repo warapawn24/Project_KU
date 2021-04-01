@@ -1,8 +1,12 @@
 package com.ku.dku.controller;
 
 
+
+
 import javax.annotation.RegEx;
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,35 +44,51 @@ public class LoginController {
 	
 	
 	@RequestMapping(value = "/login",method = RequestMethod.POST)
-	public @ResponseBody LoginResponse login(@RequestBody LoginRequest request,HttpServletRequest req) {
+	public @ResponseBody LoginResponse login(@RequestBody LoginRequest request, HttpServletRequest req ) {
 		LoginResponse response = new LoginResponse();
 		
+		try {
 		TxStudent txStudent = new TxStudent();
 		txStudent.setStudentUsername(request.getStudentUsername());
 		txStudent.setStudentPassword(request.getStudentPassword());
 		boolean login = loginService.login(txStudent);
 		
+			
 		String getData = txStudent.getStudentUsername();
 		if (login) {
 			
 			TxStudent getTxStudent = studentRepository.findByStudentUsername(getData);
 			
+			
 			req.getSession().setAttribute("username", getTxStudent.getStudentUsername());
 			req.getSession().setAttribute("studentFname", getTxStudent.getStudentFname());
 			req.getSession().setAttribute("studentLname", getTxStudent.getStudentLname());
+			req.getSession().setAttribute("studentId",getTxStudent.getStudentId());
+			
+			System.out.println(req.getSession().getAttribute("username"));
+			System.out.println("Hello");
+			
 			response.setStudentIdResponse(getTxStudent.getStudentId());
 			response.setStudentFnameResponse(getTxStudent.getStudentFname());
 			response.setStudentLnameResponse(getTxStudent.getStudentLname());
+			response.setStudentPhoneResponse(getTxStudent.getStudentPhone());
+			response.setStudentRoomResponse(getTxStudent.getStudentRoom());
 			response.setStatusResponse("success");
 			
 			//getFiles
 			MsFile files = fileService.getFile(getTxStudent.getStudentId());
-			response.setFileData(files.getFileData());
+//			response.setFileData(files.getFileData());
+			response.setFileType(files.getFileType());
 			response.setFileName(files.getFileName());
 		}
-		else {
+			else {
 			response.setStatusResponse("failed");
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.setStatusResponse("longin failed");
 		}
+		
 		return response;
 	}
 }

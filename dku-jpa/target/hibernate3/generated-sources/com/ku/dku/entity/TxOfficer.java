@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Mar 28, 2021 1:58:24 PM by Hibernate Tools 3.2.2.GA
+// Generated Apr 2, 2021 3:44:30 AM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -29,7 +29,7 @@ public class TxOfficer  implements java.io.Serializable, BaseEntity {
     public static final String P_OFFICERPASSWORD = "officerPassword";
     public static final String P_OFFICERFNAME = "officerFname";
     public static final String P_OFFICERLNAME = "officerLname";
-    public static final String P_OFFICERROLE = "officerRole";
+    public static final String P_OFFICERROLEID = "officerRoleId";
     public static final String P_OFFICERSTATUS = "officerStatus";
     public static final String P_OFFICERLOGINDATE = "officerLogindate";
     public static final String P_OFFICERFAIL = "officerFail";
@@ -44,25 +44,25 @@ public class TxOfficer  implements java.io.Serializable, BaseEntity {
     private String officerPassword;
     private String officerFname;
     private String officerLname;
-    private String officerRole;
+    private Long officerRoleId;
     private String officerStatus;
     private Date officerLogindate;
     private Long officerFail;
     private String officerEmail;
     private Long officerId;
-    private Long officerOtp;
+    private String officerOtp;
     private Long officerLoginfirstchange;
 
     public TxOfficer() {
     }
 
 
-    public TxOfficer(String officerUsername, String officerPassword, String officerFname, String officerLname, String officerRole, String officerStatus, Date officerLogindate, Long officerFail, String officerEmail, Long officerId, Long officerOtp, Long officerLoginfirstchange) {
+    public TxOfficer(String officerUsername, String officerPassword, String officerFname, String officerLname, Long officerRoleId, String officerStatus, Date officerLogindate, Long officerFail, String officerEmail, Long officerId, String officerOtp, Long officerLoginfirstchange) {
         this.officerUsername = officerUsername;
         this.officerPassword = officerPassword;
         this.officerFname = officerFname;
         this.officerLname = officerLname;
-        this.officerRole = officerRole;
+        this.officerRoleId = officerRoleId;
         this.officerStatus = officerStatus;
         this.officerLogindate = officerLogindate;
         this.officerFail = officerFail;
@@ -120,13 +120,13 @@ public class TxOfficer  implements java.io.Serializable, BaseEntity {
         this.officerLname = officerLname;
     }
     
-    @Column(name="officer_role", length=20)
-    public String getOfficerRole() {
-        return this.officerRole;
+    @Column(name="officer_role_id")
+    public Long getOfficerRoleId() {
+        return this.officerRoleId;
     }
     
-    public void setOfficerRole(String officerRole) {
-        this.officerRole = officerRole;
+    public void setOfficerRoleId(Long officerRoleId) {
+        this.officerRoleId = officerRoleId;
     }
     
     @Column(name="officer_status", length=50)
@@ -175,11 +175,11 @@ public class TxOfficer  implements java.io.Serializable, BaseEntity {
     }
     
     @Column(name="officer_otp")
-    public Long getOfficerOtp() {
+    public String getOfficerOtp() {
         return this.officerOtp;
     }
     
-    public void setOfficerOtp(Long officerOtp) {
+    public void setOfficerOtp(String officerOtp) {
         this.officerOtp = officerOtp;
     }
     

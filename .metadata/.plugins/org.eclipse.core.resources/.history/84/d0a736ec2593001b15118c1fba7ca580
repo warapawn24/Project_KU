@@ -1,0 +1,41 @@
+package com.ku.dku.bean;
+
+public class AdminForgotPasswordRequest {
+
+	private String officerEmail;
+	private String newPassword;
+	private String confirm;
+	
+	
+	public AdminForgotPasswordRequest() {
+		super();
+	}
+	public AdminForgotPasswordRequest(String officerEmail, String newPassword, String confirm) {
+		super();
+		this.officerEmail = officerEmail;
+		this.newPassword = newPassword;
+		this.confirm = confirm;
+	}
+	public String getOfficerEmail() {
+		return officerEmail;
+	}
+	public void setOfficerEmail(String officerEmail) {
+		this.officerEmail = officerEmail;
+	}
+	public String getNewPassword() {
+		return newPassword;
+	}
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+	public String getConfirm() {
+		return confirm;
+	}
+	public void setConfirm(String confirm) {
+		this.confirm = confirm;
+	}
+	
+
+
+	
+}

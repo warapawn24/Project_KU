@@ -37,9 +37,11 @@ public class ProfileController {
 		response.setStudentId(txStudent.getStudentId());
 		response.setLoginDate(txStudent.getStudentLogindate());
 		
+		
 		//getFiles
 		MsFile files = fileService.getFile(txStudent.getStudentId());
-		response.setFileData(files.getFileData());
+//		response.setFileData(files.getFileData());
+		response.setFileType(files.getFileType());
 		response.setFileName(files.getFileName());
 		
 		return response;
