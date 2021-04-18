@@ -20,13 +20,12 @@ public class AdminProfileService {
 	public boolean updateOfficer(TxOfficer officer) {
 		
 		TxOfficer txOfficer = new TxOfficer();
-		long startOfficerId = 1;
+		
 		
 		
 		Integer loginfirstchange = 0;
 		
-		if (txOfficer.getRecId()==1) {
-			txOfficer.setOfficerId(startOfficerId);
+		
 			txOfficer.setOfficerFname(officer.getOfficerFname());
 			txOfficer.setOfficerLname(officer.getOfficerLname());
 			txOfficer.setOfficerEmail(officer.getOfficerEmail());
@@ -37,31 +36,19 @@ public class AdminProfileService {
 			txOfficer.setOfficerStatus(LookupConstant.LK_STATUS_ACTIVE);
 			
 			txOfficerRepository.save(txOfficer);
-		}else {
-			
-			txOfficer.setOfficerFname(officer.getOfficerFname());
-			txOfficer.setOfficerLname(officer.getOfficerLname());
-			txOfficer.setOfficerEmail(officer.getOfficerEmail());
-			txOfficer.setOfficerUsername(officer.getOfficerUsername());
-			txOfficer.setOfficerPassword(bCryptPasswordEncoder.encode(officer.getOfficerPassword()));
-			txOfficer.setOfficerRoleId(officer.getOfficerRoleId());
-			txOfficer.setOfficerLoginfirstchange(loginfirstchange);
-			txOfficer.setOfficerStatus(LookupConstant.LK_STATUS_ACTIVE);
-			
-			txOfficerRepository.save(txOfficer);
-		}
 		
 		
 		return true;
 		
 	}
-	
+	//
 	public TxOfficer findByOfficerId(long officerId) {
 		TxOfficer officer = txOfficerRepository.findByRecId(officerId);
 		
 		return officer;
 	}
 	
+	//เปลี่ยนสถานะ
 	public boolean changeOfficerStatus(TxOfficer officer) {
 		
 		TxOfficer txOfficer = txOfficerRepository.findByRecId(officer.getRecId());
@@ -71,4 +58,6 @@ public class AdminProfileService {
 		
 		return true;
 	}
+	
+	
 }

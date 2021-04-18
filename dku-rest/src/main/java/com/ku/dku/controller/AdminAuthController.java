@@ -65,10 +65,10 @@ public class AdminAuthController {
 			System.out.println(req.getSession().getAttribute("username"));
 			System.out.println("Hello");
 			
-			response.setPkIdResponse(getTxOfficer.getRecId());
-			response.setOfficerIdResponse(getTxOfficer.getOfficerId());
+			response.setOfficerIdResponse(getTxOfficer.getRecId());
 			response.setOfficerFnameResponse(getTxOfficer.getOfficerFname());
 			response.setOfficerLnameResponse(getTxOfficer.getOfficerLname());
+			response.setOfficerLoginfirst(getTxOfficer.getOfficerLoginfirstchange());
 			response.setStatusResponse("success");
 			
 			//getFiles
@@ -93,7 +93,7 @@ public class AdminAuthController {
 		public @ResponseBody ChangePasswordResponse changePassword(@RequestBody ChangePasswordRequest request) {
 			ChangePasswordResponse response = new ChangePasswordResponse();
 
-			TxOfficer officer = txOfficerRepository.findByOfficerId(request.getOfficerId());
+			TxOfficer officer = txOfficerRepository.findByRecId(request.getOfficerId());
 			// มีid
 			if (officer != null) {
 

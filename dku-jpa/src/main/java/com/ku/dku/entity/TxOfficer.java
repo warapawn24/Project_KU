@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Apr 6, 2021 10:54:01 PM by Hibernate Tools 3.2.2.GA
+// Generated Apr 19, 2021 3:03:38 AM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -34,7 +34,6 @@ public class TxOfficer  implements java.io.Serializable, BaseEntity {
     public static final String P_OFFICERLOGINDATE = "officerLogindate";
     public static final String P_OFFICERFAIL = "officerFail";
     public static final String P_OFFICEREMAIL = "officerEmail";
-    public static final String P_OFFICERID = "officerId";
     public static final String P_OFFICEROTP = "officerOtp";
     public static final String P_OFFICERLOGINFIRSTCHANGE = "officerLoginfirstchange";
 
@@ -49,7 +48,6 @@ public class TxOfficer  implements java.io.Serializable, BaseEntity {
     private Date officerLogindate;
     private Integer officerFail;
     private String officerEmail;
-    private Long officerId;
     private String officerOtp;
     private Integer officerLoginfirstchange;
 
@@ -57,7 +55,7 @@ public class TxOfficer  implements java.io.Serializable, BaseEntity {
     }
 
 
-    public TxOfficer(String officerUsername, String officerPassword, String officerFname, String officerLname, Long officerRoleId, String officerStatus, Date officerLogindate, Integer officerFail, String officerEmail, Long officerId, String officerOtp, Integer officerLoginfirstchange) {
+    public TxOfficer(String officerUsername, String officerPassword, String officerFname, String officerLname, Long officerRoleId, String officerStatus, Date officerLogindate, Integer officerFail, String officerEmail, String officerOtp, Integer officerLoginfirstchange) {
         this.officerUsername = officerUsername;
         this.officerPassword = officerPassword;
         this.officerFname = officerFname;
@@ -67,7 +65,6 @@ public class TxOfficer  implements java.io.Serializable, BaseEntity {
         this.officerLogindate = officerLogindate;
         this.officerFail = officerFail;
         this.officerEmail = officerEmail;
-        this.officerId = officerId;
         this.officerOtp = officerOtp;
         this.officerLoginfirstchange = officerLoginfirstchange;
     }
@@ -163,15 +160,6 @@ public class TxOfficer  implements java.io.Serializable, BaseEntity {
     
     public void setOfficerEmail(String officerEmail) {
         this.officerEmail = officerEmail;
-    }
-    
-    @Column(name="officer_id")
-    public Long getOfficerId() {
-        return this.officerId;
-    }
-    
-    public void setOfficerId(Long officerId) {
-        this.officerId = officerId;
     }
     
     @Column(name="officer_otp")

@@ -98,7 +98,7 @@ public class LoginService {
 			if (bCryptPasswordEncoder.matches(officer.getOfficerPassword(), check.getOfficerPassword())
 					&& officer.getOfficerUsername().equals(check.getOfficerUsername())) {
 				log.setOfficerUsername(check.getOfficerUsername());
-				log.setOfficerId(check.getOfficerId());
+				log.setOfficerId(check.getRecId());
 				log.setOfficerPassword(check.getOfficerPassword());
 				
 				check.setOfficerLogindate(date);
@@ -119,7 +119,7 @@ public class LoginService {
 				check.setOfficerFail(num);
 				txOfficerRepository.save(check);
 				log.setOfficerUsername(check.getOfficerUsername());
-				log.setOfficerId(check.getOfficerId());
+				log.setOfficerId(check.getRecId());
 				log.setOfficerPassword(check.getOfficerPassword());
 				log.setLoginTime(date);
 				log.setLoginForm(loginForm);
