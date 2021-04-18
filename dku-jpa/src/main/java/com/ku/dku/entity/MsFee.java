@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Mar 20, 2021 11:00:54 PM by Hibernate Tools 3.2.2.GA
+// Generated Apr 18, 2021 1:49:04 AM by Hibernate Tools 3.2.2.GA
 
 
 import javax.persistence.Column;
@@ -25,7 +25,6 @@ public class MsFee  implements java.io.Serializable, BaseEntity {
     public static final String P_TERMID = "termId";
     public static final String P_TYPEID = "typeId";
     public static final String P_FEEPRICE = "feePrice";
-    public static final String P_BUILDINGID = "buildingId";
     public static final String P_FEENUMBER = "feeNumber";
 
 
@@ -33,22 +32,20 @@ public class MsFee  implements java.io.Serializable, BaseEntity {
     private Long termId;
     private Long typeId;
     private float feePrice;
-    private Long buildingId;
     private String feeNumber;
 
     public MsFee() {
     }
 
 
-    public MsFee(Long termId, Long typeId, float feePrice, Long buildingId, String feeNumber) {
+    public MsFee(Long termId, Long typeId, float feePrice, String feeNumber) {
         this.termId = termId;
         this.typeId = typeId;
         this.feePrice = feePrice;
-        this.buildingId = buildingId;
         this.feeNumber = feeNumber;
     }
    
-    @Id 
+    @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     
     @Column(name="rec_id", unique=true, nullable=false)
@@ -85,15 +82,6 @@ public class MsFee  implements java.io.Serializable, BaseEntity {
     
     public void setFeePrice(float feePrice) {
         this.feePrice = feePrice;
-    }
-    
-    @Column(name="building_id", nullable=false)
-    public Long getBuildingId() {
-        return this.buildingId;
-    }
-    
-    public void setBuildingId(Long buildingId) {
-        this.buildingId = buildingId;
     }
     
     @Column(name="fee_number", nullable=false, length=20)

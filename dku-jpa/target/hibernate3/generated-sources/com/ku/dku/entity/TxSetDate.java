@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Apr 2, 2021 3:44:30 AM by Hibernate Tools 3.2.2.GA
+// Generated Apr 19, 2021 1:31:20 AM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -28,21 +28,39 @@ public class TxSetDate  implements java.io.Serializable, BaseEntity {
     public static final String P_SETRESERVESTART = "setReserveStart";
     public static final String P_SETRESERVEDUE = "setReserveDue";
     public static final String P_SETSTATUS = "setStatus";
+    public static final String P_TERMID = "termId";
+    public static final String P_SETPAYMENTSTART = "setPaymentstart";
+    public static final String P_SETPAYMENTDUE = "setPaymentDue";
+    public static final String P_YEAR = "year";
 
 
     private Long recId;
     private Date setReserveStart;
     private Date setReserveDue;
     private String setStatus;
+    private Long termId;
+    private Date setPaymentstart;
+    private Date setPaymentDue;
+    private Long year;
 
     public TxSetDate() {
     }
 
+    public TxSetDate(Long termId, Date setPaymentstart, Date setPaymentDue, Long year) {
+        this.termId = termId;
+        this.setPaymentstart = setPaymentstart;
+        this.setPaymentDue = setPaymentDue;
+        this.year = year;
+    }
 
-    public TxSetDate(Date setReserveStart, Date setReserveDue, String setStatus) {
+    public TxSetDate(Date setReserveStart, Date setReserveDue, String setStatus, Long termId, Date setPaymentstart, Date setPaymentDue, Long year) {
         this.setReserveStart = setReserveStart;
         this.setReserveDue = setReserveDue;
         this.setStatus = setStatus;
+        this.termId = termId;
+        this.setPaymentstart = setPaymentstart;
+        this.setPaymentDue = setPaymentDue;
+        this.year = year;
     }
    
     @Id @GeneratedValue(strategy=IDENTITY)
@@ -82,6 +100,42 @@ public class TxSetDate  implements java.io.Serializable, BaseEntity {
     
     public void setSetStatus(String setStatus) {
         this.setStatus = setStatus;
+    }
+    
+    @Column(name="term_id", nullable=false)
+    public Long getTermId() {
+        return this.termId;
+    }
+    
+    public void setTermId(Long termId) {
+        this.termId = termId;
+    }
+    @Temporal(TemporalType.DATE)
+    @Column(name="set_paymentstart", nullable=false, length=10)
+    public Date getSetPaymentstart() {
+        return this.setPaymentstart;
+    }
+    
+    public void setSetPaymentstart(Date setPaymentstart) {
+        this.setPaymentstart = setPaymentstart;
+    }
+    @Temporal(TemporalType.DATE)
+    @Column(name="set_paymentDue", nullable=false, length=10)
+    public Date getSetPaymentDue() {
+        return this.setPaymentDue;
+    }
+    
+    public void setSetPaymentDue(Date setPaymentDue) {
+        this.setPaymentDue = setPaymentDue;
+    }
+    
+    @Column(name="year", nullable=false)
+    public Long getYear() {
+        return this.year;
+    }
+    
+    public void setYear(Long year) {
+        this.year = year;
     }
 
 

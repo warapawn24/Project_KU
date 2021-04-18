@@ -19,4 +19,12 @@ public interface TxUtilityBillRepository extends JpaRepository<TxUtilityBill,Lon
 	@Query(value = "SELECT * " + "FROM tx_utility_bill "+ "WHERE " + "student_id = :studentId " + "ORDER BY " + "rec_id DESC "
 			+ "LIMIT 0,1", nativeQuery = true)
 	TxUtilityBill TopTxUtilityBillOrderByRecIdDESC(@Param("studentId") long studentId);
+	
+	//keyword
+	@Query(value = "SELECT * " + "FROM tx_utility_bill " + "WHERE " + "student_id LIKE CONCAT('%' ,:key ,'%') OR "
+			+ "student_fname LIKE CONCAT('%' ,:key ,'%') OR " + "student_lname LIKE CONCAT('%' ,:key ,'%') HAVING " 
+			+ "utility_status = :code OR " + "utility_status = :code2 "
+			+ "ORDER BY " + "rec_id DESC " + "LIMIT 0,1", nativeQuery = true)
+	Iterable<TxUtilityBill> findTxUtilityBillByKeywordDESC(@Param("key") String key, @Param("code") String status,
+			@Param("code2") String status2);
 }

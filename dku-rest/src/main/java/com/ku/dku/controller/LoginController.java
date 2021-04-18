@@ -51,7 +51,7 @@ public class LoginController {
 		TxStudent txStudent = new TxStudent();
 		txStudent.setStudentUsername(request.getStudentUsername());
 		txStudent.setStudentPassword(request.getStudentPassword());
-		boolean login = loginService.login(txStudent);
+		boolean login = loginService.login(txStudent,request.getLoginFrom());
 		
 			
 		String getData = txStudent.getStudentUsername();

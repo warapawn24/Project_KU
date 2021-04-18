@@ -19,8 +19,6 @@ public class QMsFee extends EntityPathBase<MsFee> {
 
     public static final QMsFee msFee = new QMsFee("msFee");
 
-    public final NumberPath<Long> buildingId = createNumber("buildingId", Long.class);
-
     public final StringPath feeNumber = createString("feeNumber");
 
     public final NumberPath<Float> feePrice = createNumber("feePrice", Float.class);

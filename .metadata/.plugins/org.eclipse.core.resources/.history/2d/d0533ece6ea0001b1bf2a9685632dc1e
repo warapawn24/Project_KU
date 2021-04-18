@@ -1,0 +1,83 @@
+package com.ku.dku.bean;
+
+import java.util.Date;
+
+public class ListAdminUpdateUtilityDetail {
+
+	private String studentId;
+	private String studentFname;
+	private String studentLName;
+	private Float utilityWater;
+	private Float utilityElectric;
+	private Float utilityFines;
+	private Float utilityTotal;
+	private Date utilityDate;
+	
+	
+	public ListAdminUpdateUtilityDetail() {
+		super();
+	}
+	public ListAdminUpdateUtilityDetail(String studentId, String studentFname, String studentLName, Float utilityWater,
+			Float utilityElectric, Float utilityFines, Float utilityTotal, Date utilityDate) {
+		super();
+		this.studentId = studentId;
+		this.studentFname = studentFname;
+		this.studentLName = studentLName;
+		this.utilityWater = utilityWater;
+		this.utilityElectric = utilityElectric;
+		this.utilityFines = utilityFines;
+		this.utilityTotal = utilityTotal;
+		this.utilityDate = utilityDate;
+	}
+	public String getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
+	}
+	public String getStudentFname() {
+		return studentFname;
+	}
+	public void setStudentFname(String studentFname) {
+		this.studentFname = studentFname;
+	}
+	public String getStudentLName() {
+		return studentLName;
+	}
+	public void setStudentLName(String studentLName) {
+		this.studentLName = studentLName;
+	}
+	public Float getUtilityWater() {
+		return utilityWater;
+	}
+	public void setUtilityWater(Float utilityWater) {
+		this.utilityWater = utilityWater;
+	}
+	public Float getUtilityElectric() {
+		return utilityElectric;
+	}
+	public void setUtilityElectric(Float utilityElectric) {
+		this.utilityElectric = utilityElectric;
+	}
+	public Float getUtilityFines() {
+		return utilityFines;
+	}
+	public void setUtilityFines(Float utilityFines) {
+		this.utilityFines = utilityFines;
+	}
+	public Float getUtilityTotal() {
+		return utilityTotal;
+	}
+	public void setUtilityTotal(Float utilityTotal) {
+		this.utilityTotal = utilityTotal;
+	}
+	public Date getUtilityDate() {
+		return utilityDate;
+	}
+	public void setUtilityDate(Date utilityDate) {
+		this.utilityDate = utilityDate;
+	}
+	
+	
+	
+}

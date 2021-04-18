@@ -5,6 +5,7 @@ com\ku\dku\entity\QMsBuildingSeven.class
 com\ku\dku\entity\QTxBailType.class
 com\ku\dku\entity\QTxUtilityBill.class
 com\ku\dku\entity\QLkBuilding.class
+com\ku\dku\entity\QLkType.class
 com\ku\dku\entity\QStudent.class
 com\ku\dku\entity\QMsRepairYear.class
 com\ku\dku\entity\QMsBuildingOne.class
@@ -27,6 +28,7 @@ com\ku\dku\entity\QMsBuildingFive.class
 com\ku\dku\entity\QTxRequestform.class
 com\ku\dku\entity\QMsBuildingThree.class
 com\ku\dku\entity\QTxLoginStudent.class
+com\ku\dku\entity\QMsRunningNumber.class
 com\ku\dku\entity\QLkHistory.class
 com\ku\dku\entity\QTxBail.class
 com\ku\dku\entity\QMsFee.class

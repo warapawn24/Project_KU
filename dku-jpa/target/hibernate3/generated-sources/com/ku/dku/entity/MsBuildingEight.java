@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Apr 2, 2021 3:44:30 AM by Hibernate Tools 3.2.2.GA
+// Generated Apr 19, 2021 1:31:20 AM by Hibernate Tools 3.2.2.GA
 
 
 import javax.persistence.Column;
@@ -27,6 +27,7 @@ public class MsBuildingEight  implements java.io.Serializable, BaseEntity {
     public static final String P_BUILDINGID = "buildingId";
     public static final String P_NUMBER = "number";
     public static final String P_BUILDINGTOTAL = "buildingTotal";
+    public static final String P_TYPEID = "typeId";
 
 
     private Long recId;
@@ -35,17 +36,19 @@ public class MsBuildingEight  implements java.io.Serializable, BaseEntity {
     private Long buildingId;
     private Long number;
     private Long buildingTotal;
+    private Long typeId;
 
     public MsBuildingEight() {
     }
 
 
-    public MsBuildingEight(Long roomId, Long floorId, Long buildingId, Long number, Long buildingTotal) {
+    public MsBuildingEight(Long roomId, Long floorId, Long buildingId, Long number, Long buildingTotal, Long typeId) {
         this.roomId = roomId;
         this.floorId = floorId;
         this.buildingId = buildingId;
         this.number = number;
         this.buildingTotal = buildingTotal;
+        this.typeId = typeId;
     }
    
     @Id @GeneratedValue(strategy=IDENTITY)
@@ -103,6 +106,15 @@ public class MsBuildingEight  implements java.io.Serializable, BaseEntity {
     
     public void setBuildingTotal(Long buildingTotal) {
         this.buildingTotal = buildingTotal;
+    }
+    
+    @Column(name="type_id", nullable=false)
+    public Long getTypeId() {
+        return this.typeId;
+    }
+    
+    public void setTypeId(Long typeId) {
+        this.typeId = typeId;
     }
 
 

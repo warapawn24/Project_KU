@@ -1,7 +1,8 @@
 package com.ku.dku.entity;
-// Generated Mar 27, 2021 10:36:09 PM by Hibernate Tools 3.2.2.GA
+// Generated Apr 19, 2021 1:31:20 AM by Hibernate Tools 3.2.2.GA
 
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -35,6 +38,9 @@ public class TxUtilityBill  implements java.io.Serializable, BaseEntity {
     public static final String P_UTILITYTOTAL = "utilityTotal";
     public static final String P_UTILITYSTARTDATE = "utilityStartdate";
     public static final String P_UTILITYSTATUS = "utilityStatus";
+    public static final String P_RECEIPTNUMBER = "receiptNumber";
+    public static final String P_RECEIPTDATE = "receiptDate";
+    public static final String P_OFFICERID = "officerId";
 
 
     private Long recId;
@@ -50,16 +56,15 @@ public class TxUtilityBill  implements java.io.Serializable, BaseEntity {
     private Float utilityTotal;
     private String utilityStartdate;
     private String utilityStatus;
+    private Integer receiptNumber;
+    private Date receiptDate;
+    private Long officerId;
 
     public TxUtilityBill() {
     }
 
-    public TxUtilityBill(String utilityStartdate, String utilityStatus) {
-        this.utilityStartdate = utilityStartdate;
-        this.utilityStatus = utilityStatus;
-    }
 
-    public TxUtilityBill(Long roomId, Long studentId, String studentFname, String studentLname, String utilityDate, String utilityDuedate, Float utilityWater, Float utilityElectricbill, Float utilityFines, Float utilityTotal, String utilityStartdate, String utilityStatus) {
+    public TxUtilityBill(Long roomId, Long studentId, String studentFname, String studentLname, String utilityDate, String utilityDuedate, Float utilityWater, Float utilityElectricbill, Float utilityFines, Float utilityTotal, String utilityStartdate, String utilityStatus, Integer receiptNumber, Date receiptDate, Long officerId) {
         this.roomId = roomId;
         this.studentId = studentId;
         this.studentFname = studentFname;
@@ -72,6 +77,9 @@ public class TxUtilityBill  implements java.io.Serializable, BaseEntity {
         this.utilityTotal = utilityTotal;
         this.utilityStartdate = utilityStartdate;
         this.utilityStatus = utilityStatus;
+        this.receiptNumber = receiptNumber;
+        this.receiptDate = receiptDate;
+        this.officerId = officerId;
     }
    
     @Id 
@@ -177,7 +185,7 @@ public class TxUtilityBill  implements java.io.Serializable, BaseEntity {
         this.utilityTotal = utilityTotal;
     }
     
-    @Column(name="utility_startdate", nullable=false)
+    @Column(name="utility_startdate")
     public String getUtilityStartdate() {
         return this.utilityStartdate;
     }
@@ -186,13 +194,41 @@ public class TxUtilityBill  implements java.io.Serializable, BaseEntity {
         this.utilityStartdate = utilityStartdate;
     }
     
-    @Column(name="utility_status", nullable=false)
+    @Column(name="utility_status")
     public String getUtilityStatus() {
         return this.utilityStatus;
     }
     
     public void setUtilityStatus(String utilityStatus) {
         this.utilityStatus = utilityStatus;
+    }
+    
+    @Column(name="receipt_number")
+    public Integer getReceiptNumber() {
+        return this.receiptNumber;
+    }
+    
+    public void setReceiptNumber(Integer receiptNumber) {
+        this.receiptNumber = receiptNumber;
+    }
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="receipt_date", length=19)
+    @DateTimeFormat(pattern="dd/MM/yyyy")
+    public Date getReceiptDate() {
+        return this.receiptDate;
+    }
+    
+    public void setReceiptDate(Date receiptDate) {
+        this.receiptDate = receiptDate;
+    }
+    
+    @Column(name="officer_id")
+    public Long getOfficerId() {
+        return this.officerId;
+    }
+    
+    public void setOfficerId(Long officerId) {
+        this.officerId = officerId;
     }
 
 

@@ -96,4 +96,11 @@ public class RepairService {
 		return repairList;
 		
 	}
+	
+	public Iterable<TxRepairNotification> findByStatus(String status,String keyword){
+		
+		Iterable<TxRepairNotification> findByStatus = txRepairNotificationRepository.findAllByRepairStatusAndListOrderByRecIdDESC(status, keyword);
+		return findByStatus;
+		
+	}
 }

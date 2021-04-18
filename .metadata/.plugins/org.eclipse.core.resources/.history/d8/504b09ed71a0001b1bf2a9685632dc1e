@@ -1,0 +1,36 @@
+package com.ku.dku.bean;
+
+import java.util.List;
+
+public class AdminUpdateUtilityDetailRequest {
+
+	private long roomId;
+	private List<ListAdminUpdateUtilityDetail> updateDetail;
+	
+	
+	
+	public AdminUpdateUtilityDetailRequest() {
+		super();
+	}
+	public AdminUpdateUtilityDetailRequest(long roomId, List<ListAdminUpdateUtilityDetail> updateDetail) {
+		super();
+		this.roomId = roomId;
+		this.updateDetail = updateDetail;
+	}
+	public long getRoomId() {
+		return roomId;
+	}
+	public void setRoomId(long roomId) {
+		this.roomId = roomId;
+	}
+	public List<ListAdminUpdateUtilityDetail> getUpdateDetail() {
+		return updateDetail;
+	}
+	public void setUpdateDetail(List<ListAdminUpdateUtilityDetail> updateDetail) {
+		this.updateDetail = updateDetail;
+	}
+
+	
+	
+	
+}

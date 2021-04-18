@@ -8,5 +8,5 @@ public interface LkTermRepository extends JpaRepository<LkTerm,Long> {
 
 	LkTerm findByRecId(long recId);
 	
-	LkTerm findByTermId(long termId);
+	
 }

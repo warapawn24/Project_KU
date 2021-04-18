@@ -21,8 +21,6 @@ public class QLkTerm extends EntityPathBase<LkTerm> {
 
     public final NumberPath<Long> recId = createNumber("recId", Long.class);
 
-    public final NumberPath<Long> termId = createNumber("termId", Long.class);
-
     public final StringPath termName = createString("termName");
 
     public QLkTerm(String variable) {

@@ -11,10 +11,22 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ku.dku.bean.AdminCheckOTPRequest;
 import com.ku.dku.bean.AdminForgotPasswordRequest;
 import com.ku.dku.bean.AdminForgotPasswordResponse;
+import com.ku.dku.bean.AdminLoginRequest;
+import com.ku.dku.bean.AdminLoginResponse;
 import com.ku.dku.bean.AdminSendOtpRequest;
+import com.ku.dku.bean.ChangePasswordRequest;
+import com.ku.dku.bean.ChangePasswordResponse;
+import com.ku.dku.bean.LoginRequest;
+import com.ku.dku.bean.LoginResponse;
+import com.ku.dku.entity.MsFile;
 import com.ku.dku.entity.TxOfficer;
+import com.ku.dku.entity.TxStudent;
 import com.ku.dku.repository.TxOfficerRepository;
+import com.ku.dku.service.LoginService;
 import com.ku.dku.service.NotificationService;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.LoggerFactory;
 
 @RestController
@@ -24,8 +36,110 @@ public class AdminAuthController {
 	@Autowired private NotificationService notificationService;
 	@Autowired private TxOfficerRepository txOfficerRepository;
 	@Autowired private BCryptPasswordEncoder bCryptPasswordEncoder;
+	@Autowired private LoginService loginService;
 	
 	private org.slf4j.Logger logger = LoggerFactory.getLogger(AdminAuthController.class);
+	
+	//login
+	@RequestMapping(value = "/adminLogin",method = RequestMethod.POST)
+	public @ResponseBody AdminLoginResponse adminlogin(@RequestBody AdminLoginRequest request, HttpServletRequest req ) {
+		AdminLoginResponse response = new AdminLoginResponse();
+		
+		try {
+		TxOfficer txOfficer = new TxOfficer();
+		txOfficer.setOfficerUsername(request.getOfficerUsername());
+		txOfficer.setOfficerPassword(request.getOfficerPassword());
+		boolean login = loginService.adminLogin(txOfficer,request.getLoginFrom());
+		
+			
+		String getData = txOfficer.getOfficerUsername();
+		if (login) {
+			
+			TxOfficer getTxOfficer = txOfficerRepository.findByOfficerUsername(getData);			
+			
+			req.getSession().setAttribute("username", getTxOfficer.getOfficerUsername());
+			req.getSession().setAttribute("officerFname",getTxOfficer.getOfficerFname());
+			req.getSession().setAttribute("officerLname", getTxOfficer.getOfficerLname());
+			req.getSession().setAttribute("officerId",getTxOfficer.getRecId());
+			
+			System.out.println(req.getSession().getAttribute("username"));
+			System.out.println("Hello");
+			
+			response.setPkIdResponse(getTxOfficer.getRecId());
+			response.setOfficerIdResponse(getTxOfficer.getOfficerId());
+			response.setOfficerFnameResponse(getTxOfficer.getOfficerFname());
+			response.setOfficerLnameResponse(getTxOfficer.getOfficerLname());
+			response.setStatusResponse("success");
+			
+			//getFiles
+//			MsFile files = fileService.getFile(getTxStudent.getStudentId());
+////			response.setFileData(files.getFileData());
+//			response.setFileType(files.getFileType());
+//			response.setFileName(files.getFileName());
+		}
+			else {
+			response.setStatusResponse("failed");
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.setStatusResponse("longin failed");
+		}
+		
+		return response;
+	}
+	
+	// เปลี่ยนpassword
+		@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
+		public @ResponseBody ChangePasswordResponse changePassword(@RequestBody ChangePasswordRequest request) {
+			ChangePasswordResponse response = new ChangePasswordResponse();
+
+			TxOfficer officer = txOfficerRepository.findByOfficerId(request.getOfficerId());
+			// มีid
+			if (officer != null) {
+
+				String oldPassword = officer.getOfficerPassword();
+				
+				// ชื่อเหมือนเดิมก็เปลี่ยนรหัสได้
+				
+					if (bCryptPasswordEncoder.matches(request.getOldPassword(), oldPassword)) {
+
+						officer.setOfficerPassword(bCryptPasswordEncoder.encode(request.getNewPassword()));
+						txOfficerRepository.save(officer);
+						response.setStatusResponse("success");
+					} else {
+
+						response.setStatusResponse("Notsuccess");
+					}
+			}
+//				// เปลี่ยนชื่อด้วย,เปลี่ยนรหัส
+//				else {
+//					if (finduserName == null) {
+//
+//						if (bCryptPasswordEncoder.matches(request.getOldPassword(), oldPassword)) {
+//
+//							user.setUserName(request.getUserName());
+//							user.setUserPassword(bCryptPasswordEncoder.encode(request.getNewPassword()));
+//							userRepository.save(user);
+//							response.setStatusResponse("success");
+//						} else {
+//
+//							response.setStatusResponse("Notsuccess");
+//						}
+//					} // ชื่อซ้ำ
+//					else {
+//						response.setStatusResponse("useUserName");
+//					}
+//				}
+//
+//			}
+			// ไม่มีUserนั้น
+			else {
+				response.setStatusResponse("userNull");
+			}
+
+			return response;
+
+		}
 	
 	@RequestMapping(value = "/sendOTP",method = RequestMethod.POST)
 	public @ResponseBody AdminForgotPasswordResponse forgot(@RequestBody AdminSendOtpRequest request) {
@@ -103,4 +217,6 @@ public class AdminAuthController {
 			return response;
 			
 		}
+		
+		
 }

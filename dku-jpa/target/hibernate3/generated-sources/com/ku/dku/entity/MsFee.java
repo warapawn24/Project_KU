@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Apr 2, 2021 3:44:30 AM by Hibernate Tools 3.2.2.GA
+// Generated Apr 19, 2021 1:31:20 AM by Hibernate Tools 3.2.2.GA
 
 
 import javax.persistence.Column;
@@ -25,7 +25,6 @@ public class MsFee  implements java.io.Serializable, BaseEntity {
     public static final String P_TERMID = "termId";
     public static final String P_TYPEID = "typeId";
     public static final String P_FEEPRICE = "feePrice";
-    public static final String P_BUILDINGID = "buildingId";
     public static final String P_FEENUMBER = "feeNumber";
 
 
@@ -33,18 +32,16 @@ public class MsFee  implements java.io.Serializable, BaseEntity {
     private Long termId;
     private Long typeId;
     private float feePrice;
-    private Long buildingId;
     private String feeNumber;
 
     public MsFee() {
     }
 
 
-    public MsFee(Long termId, Long typeId, float feePrice, Long buildingId, String feeNumber) {
+    public MsFee(Long termId, Long typeId, float feePrice, String feeNumber) {
         this.termId = termId;
         this.typeId = typeId;
         this.feePrice = feePrice;
-        this.buildingId = buildingId;
         this.feeNumber = feeNumber;
     }
    
@@ -85,15 +82,6 @@ public class MsFee  implements java.io.Serializable, BaseEntity {
     
     public void setFeePrice(float feePrice) {
         this.feePrice = feePrice;
-    }
-    
-    @Column(name="building_id", nullable=false)
-    public Long getBuildingId() {
-        return this.buildingId;
-    }
-    
-    public void setBuildingId(Long buildingId) {
-        this.buildingId = buildingId;
     }
     
     @Column(name="fee_number", nullable=false, length=20)

@@ -1,0 +1,28 @@
+package com.ku.dku.bean;
+
+import java.util.List;
+
+public class AdminUpdateUtilityDetail {
+
+	private List<ListAdminUpdateUtilityDetail> updateDetail;
+
+	
+	public AdminUpdateUtilityDetail() {
+		super();
+	}
+
+	public AdminUpdateUtilityDetail(List<ListAdminUpdateUtilityDetail> updateDetail) {
+		super();
+		this.updateDetail = updateDetail;
+	}
+
+	public List<ListAdminUpdateUtilityDetail> getUpdateDetail() {
+		return updateDetail;
+	}
+
+	public void setUpdateDetail(List<ListAdminUpdateUtilityDetail> updateDetail) {
+		this.updateDetail = updateDetail;
+	}
+	
+	
+}

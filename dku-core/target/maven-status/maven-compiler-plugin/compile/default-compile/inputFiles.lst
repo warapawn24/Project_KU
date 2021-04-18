@@ -1,3 +1,4 @@
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\LkRoleRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsRoomRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxUtilityBillRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\NotificationService.java
@@ -6,6 +7,7 @@ C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\bean\ListBailE
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\UtilityBillService.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TXBailEquipmentRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxReserveDetailRepository.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsBuildingOneRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\AdminProfileService.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxRepairNotificationRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsRepairYearRepository.java
@@ -14,7 +16,10 @@ C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsF
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsBuildingRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxReserveRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\bean\ListBailTypeRequest.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsBuildingEightRepository.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsBuildingSixRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\BuildingService.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsBuildingSevenRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxStudentRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\bean\UpdateBailRequest.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\LkTermRepository.java
@@ -22,10 +27,17 @@ C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxS
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxOfficerRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxBailTypeRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\BookRooomService.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsRunningNumberRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\ProfileService.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsBuildingTwoRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\FileService.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsBuildingFourRepository.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxLoginAdminRepository.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\RunningNumberService.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\BailService.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsBuildingThreeRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\PostService.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsBuildingFiveRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxBailRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxPostRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxLoginStudentRepository.java

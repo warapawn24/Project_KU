@@ -19,6 +19,12 @@ public class QTxUtilityBill extends EntityPathBase<TxUtilityBill> {
 
     public static final QTxUtilityBill txUtilityBill = new QTxUtilityBill("txUtilityBill");
 
+    public final NumberPath<Long> officerId = createNumber("officerId", Long.class);
+
+    public final DateTimePath<java.util.Date> receiptDate = createDateTime("receiptDate", java.util.Date.class);
+
+    public final NumberPath<Integer> receiptNumber = createNumber("receiptNumber", Integer.class);
+
     public final NumberPath<Long> recId = createNumber("recId", Long.class);
 
     public final NumberPath<Long> roomId = createNumber("roomId", Long.class);

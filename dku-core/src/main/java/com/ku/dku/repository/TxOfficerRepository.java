@@ -8,7 +8,11 @@ public interface TxOfficerRepository extends JpaRepository<TxOfficer, Long> {
 
 	TxOfficer findByRecId(long recId);
 	
+	TxOfficer findByOfficerId(long officerid);
+	
 	TxOfficer findByOfficerEmail(String officerEmail);
 	
 	TxOfficer findByOfficerOtp(String officerOtp);
+	
+	TxOfficer findByOfficerUsername(String officerUserName);
 }

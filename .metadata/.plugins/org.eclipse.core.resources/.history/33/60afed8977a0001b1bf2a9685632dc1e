@@ -1,0 +1,55 @@
+package com.ku.dku.bean;
+
+import java.util.Date;
+
+public class ListAdminUpdateUtilityDetail {
+
+	
+	private Float utilityWater;
+	private Float utilityElectric;
+	
+	private Float utilityTotal;
+
+	
+	
+	public ListAdminUpdateUtilityDetail() {
+		super();
+	}
+
+	public ListAdminUpdateUtilityDetail(Float utilityWater, Float utilityElectric, Float utilityTotal) {
+		super();
+		this.utilityWater = utilityWater;
+		this.utilityElectric = utilityElectric;
+		this.utilityTotal = utilityTotal;
+	}
+
+	public Float getUtilityWater() {
+		return utilityWater;
+	}
+
+	public void setUtilityWater(Float utilityWater) {
+		this.utilityWater = utilityWater;
+	}
+
+	public Float getUtilityElectric() {
+		return utilityElectric;
+	}
+
+	public void setUtilityElectric(Float utilityElectric) {
+		this.utilityElectric = utilityElectric;
+	}
+
+	public Float getUtilityTotal() {
+		return utilityTotal;
+	}
+
+	public void setUtilityTotal(Float utilityTotal) {
+		this.utilityTotal = utilityTotal;
+	}
+	
+	
+	
+	
+	
+	
+}

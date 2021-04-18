@@ -7,12 +7,15 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ku.dku.bean.AdminRepairShowDetailRequest;
+import com.ku.dku.bean.AdminRepairShowDetailResponse;
 import com.ku.dku.bean.CreateRepairNumberRequest;
 import com.ku.dku.bean.ListRepairRequest;
 import com.ku.dku.bean.ListRepairResponse;
@@ -108,6 +111,26 @@ public class RepairController {
 			response.setRepairDuedate(txRepairNotification.getRepairDuedate());
 			
 			
+		}
+	
+		return response;
+		
+	}
+	
+	//AdminListการแจ้งซ่อม
+	@PostMapping(value = "/adminRepairDetail")
+	public @ResponseBody AdminRepairShowDetailResponse adminListRepair(@RequestBody AdminRepairShowDetailRequest request) {
+		AdminRepairShowDetailResponse response = new AdminRepairShowDetailResponse();
+		
+		Iterable<TxRepairNotification> listRepair = repairService.findByStatus(request.getRepairStatus(),request.getRepairList());
+		for (TxRepairNotification txRepairNotification : listRepair) {
+			response.setRoomId(txRepairNotification.getRoomId());
+			response.setRepairDate(txRepairNotification.getRepairDate());
+			response.setRepairId(txRepairNotification.getRecId());
+			response.setRepairList(txRepairNotification.getRepairList());
+			response.setStudentId(txRepairNotification.getStudentId());
+			response.setRepairStatus(txRepairNotification.getRepairStatus());
+
 		}
 	
 		return response;

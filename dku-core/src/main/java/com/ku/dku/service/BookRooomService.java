@@ -1,10 +1,13 @@
 package com.ku.dku.service;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ku.dku.constant.LookupConstant;
 import com.ku.dku.entity.MsRoom;
 import com.ku.dku.entity.TxReserve;
 import com.ku.dku.entity.TxReserveDetail;
@@ -26,6 +29,7 @@ public class BookRooomService {
 	@Autowired private TxReserveRepository txReserveRepository;
 	@Autowired private TxStudentRepository txStudentRepository;
 	@Autowired private TxSetDateRepository txSetDateRepository;
+	
 	
 	public boolean bookRoom(long roomId,long studentId) {
 		MsRoom msRoom = msRoomRepository.findByRoomId(roomId);
@@ -99,5 +103,25 @@ public class BookRooomService {
 	
 	public TxStudent findByStudentId(long studentId) {
 		return txStudentRepository.findByStudentId(studentId);
+	}
+	
+	//SetDate
+	public boolean setDate(TxSetDate date) {
+		
+		TxSetDate txSetDate = new TxSetDate();
+		txSetDate.setTermId(date.getTermId());
+		txSetDate.setSetReserveStart(date.getSetReserveStart());
+		txSetDate.setSetReserveDue(date.getSetReserveDue());
+		txSetDate.setYear(date.getYear());
+		txSetDate.setSetPaymentstart(date.getSetReserveStart());
+		txSetDate.setSetPaymentDue(date.getSetReserveDue());
+		txSetDate.setSetStatus(LookupConstant.SET_DATE_STATUS_OPEN);
+		
+		txSetDateRepository.save(txSetDate);
+		
+		return true;
+		
+		
+		
 	}
 }

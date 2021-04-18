@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ku.dku.bean.LastUtilityBillDetailResponse;
 import com.ku.dku.bean.ListLastUtilityBillDetailResponse;
 import com.ku.dku.bean.ListLastUtilityBillThreeResponse;
+import com.ku.dku.bean.SearchRequest;
 import com.ku.dku.bean.UtilityBillRequest;
 import com.ku.dku.bean.UtilityBillResponse;
+import com.ku.dku.bean.UtilityReceiptRequest;
+import com.ku.dku.bean.UtilityReceiptResponse;
+import com.ku.dku.constant.LookupConstant;
+import com.ku.dku.entity.LkRole;
+import com.ku.dku.entity.TxOfficer;
 import com.ku.dku.entity.TxUtilityBill;
+import com.ku.dku.repository.LkRoleRepository;
+import com.ku.dku.repository.TxOfficerRepository;
 import com.ku.dku.service.UtilityBillService;
 
 @RestController
@@ -26,6 +36,8 @@ import com.ku.dku.service.UtilityBillService;
 public class UtilityBillController {
 
 	@Autowired private UtilityBillService utilityBillService;
+	@Autowired private TxOfficerRepository txOfficerRepository;
+	@Autowired private LkRoleRepository lkRoleRepository;
 	
 	@RequestMapping(value = "/utilityData",method = RequestMethod.POST)
 	public @ResponseBody UtilityBillResponse utilityData(@RequestBody UtilityBillRequest request) {
@@ -90,5 +102,44 @@ public class UtilityBillController {
 		
 		return response;
 		
+	}
+	
+	//Adminsearch
+	@RequestMapping(value = "/adminSearch",method = RequestMethod.POST)
+	public @ResponseBody Iterable<TxUtilityBill> adminSearch(@RequestBody SearchRequest request){
+		
+		Iterable<TxUtilityBill> search = utilityBillService.findByKeyword(request.getKeyword(), LookupConstant.UTILITY_STATUS_PAID, LookupConstant.UTILITY_STATUS_UNPAID);
+		
+		return search;
+	}
+	
+	//AdminReceipt
+	@RequestMapping(value = "/createReceipt",method = RequestMethod.POST)
+	public @ResponseBody UtilityReceiptResponse receipt(@RequestBody UtilityReceiptRequest request ,HttpSession session) {
+		UtilityReceiptResponse response = new UtilityReceiptResponse();
+	
+		TxUtilityBill createReceipt = utilityBillService.createReceipt(request.getUtilityId(),(long) session.getAttribute("officerId"));
+		if (createReceipt!=null) {
+			response.setOfficerFname((String) session.getAttribute("officerFname"));
+			response.setOfficerLname((String) session.getAttribute("officerFname"));
+			
+			TxOfficer txOfficer = txOfficerRepository.findByRecId(createReceipt.getOfficerId());
+			LkRole lkRole = lkRoleRepository.findByRecId(txOfficer.getOfficerRoleId());
+			response.setOfficerRole(lkRole.getRoleName());
+			
+			response.setReceiptNumber(createReceipt.getReceiptNumber());
+			response.setReceiptDate(createReceipt.getReceiptDate());
+			response.setRoomId(createReceipt.getRoomId());
+			response.setStudentFname(createReceipt.getStudentFname());
+			response.setStudentId(createReceipt.getStudentId());
+			response.setStudentLname(createReceipt.getStudentLname());
+			response.setUtilityDate(createReceipt.getUtilityDate());
+			response.setUtilityElectric(createReceipt.getUtilityElectricbill());
+			response.setUtilityFines(createReceipt.getUtilityFines());
+			response.setUtilityTotal(createReceipt.getUtilityTotal());
+			response.setUtilityWater(createReceipt.getUtilityWater());
+		}
+		
+		return response;
 	}
 }

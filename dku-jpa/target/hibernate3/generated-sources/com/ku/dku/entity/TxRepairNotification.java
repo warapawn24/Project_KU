@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Apr 2, 2021 3:44:30 AM by Hibernate Tools 3.2.2.GA
+// Generated Apr 19, 2021 1:31:20 AM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;

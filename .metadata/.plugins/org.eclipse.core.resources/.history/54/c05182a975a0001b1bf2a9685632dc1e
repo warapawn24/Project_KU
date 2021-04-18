@@ -1,0 +1,63 @@
+package com.ku.dku.bean;
+
+import java.util.List;
+
+public class AdminUpdateUtilityDetailRequest {
+
+	private long roomId;
+
+	private Float utilityWater;
+	private Float utilityElectric;
+	
+	private Float utilityTotal;
+
+	
+	public AdminUpdateUtilityDetailRequest() {
+		super();
+	}
+
+	public AdminUpdateUtilityDetailRequest(long roomId, Float utilityWater, Float utilityElectric, Float utilityTotal) {
+		super();
+		this.roomId = roomId;
+		this.utilityWater = utilityWater;
+		this.utilityElectric = utilityElectric;
+		this.utilityTotal = utilityTotal;
+	}
+
+	public long getRoomId() {
+		return roomId;
+	}
+
+	public void setRoomId(long roomId) {
+		this.roomId = roomId;
+	}
+
+	public Float getUtilityWater() {
+		return utilityWater;
+	}
+
+	public void setUtilityWater(Float utilityWater) {
+		this.utilityWater = utilityWater;
+	}
+
+	public Float getUtilityElectric() {
+		return utilityElectric;
+	}
+
+	public void setUtilityElectric(Float utilityElectric) {
+		this.utilityElectric = utilityElectric;
+	}
+
+	public Float getUtilityTotal() {
+		return utilityTotal;
+	}
+
+	public void setUtilityTotal(Float utilityTotal) {
+		this.utilityTotal = utilityTotal;
+	}
+	
+	
+	
+	
+	
+}

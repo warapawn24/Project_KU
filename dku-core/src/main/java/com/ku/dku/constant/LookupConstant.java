@@ -15,4 +15,16 @@ public class LookupConstant {
 	//lk_status
 	public static String LK_STATUS_ACTIVE = "active";
 	public static String LK_STATUS_RESIGN = "resign";
+
+	//login
+	public static String TX_LOGIN_ERROR_Y = "Y";
+	public static String TX_LOGIN_ERROR_N = "N";
+	
+	//Utility
+	public static String UTILITY_STATUS_UNPAID = "unpaid";
+	public static String UTILITY_STATUS_PAID = "paid";
+	
+	//SetDate
+	public static String SET_DATE_STATUS_OPEN ="open";
+	public static String SET_DATE_STATUS_CLOSE ="close";
 }

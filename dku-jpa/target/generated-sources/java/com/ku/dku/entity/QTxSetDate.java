@@ -21,11 +21,19 @@ public class QTxSetDate extends EntityPathBase<TxSetDate> {
 
     public final NumberPath<Long> recId = createNumber("recId", Long.class);
 
+    public final DatePath<java.util.Date> setPaymentDue = createDate("setPaymentDue", java.util.Date.class);
+
+    public final DatePath<java.util.Date> setPaymentstart = createDate("setPaymentstart", java.util.Date.class);
+
     public final DatePath<java.util.Date> setReserveDue = createDate("setReserveDue", java.util.Date.class);
 
     public final DatePath<java.util.Date> setReserveStart = createDate("setReserveStart", java.util.Date.class);
 
     public final StringPath setStatus = createString("setStatus");
+
+    public final NumberPath<Long> termId = createNumber("termId", Long.class);
+
+    public final NumberPath<Integer> year = createNumber("year", Integer.class);
 
     public QTxSetDate(String variable) {
         super(TxSetDate.class, forVariable(variable));
