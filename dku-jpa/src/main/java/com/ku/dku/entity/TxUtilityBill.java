@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Apr 19, 2021 1:31:20 AM by Hibernate Tools 3.2.2.GA
+// Generated Apr 20, 2021 6:24:47 PM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -82,7 +82,7 @@ public class TxUtilityBill  implements java.io.Serializable, BaseEntity {
         this.officerId = officerId;
     }
    
-    @Id 
+    @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     
     @Column(name="rec_id", unique=true, nullable=false)

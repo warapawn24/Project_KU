@@ -1,0 +1,29 @@
+package com.ku.dku.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.ku.dku.entity.TxBail;
+import com.ku.dku.entity.TxUtilityBill;
+
+public interface TxBailRepository extends JpaRepository<TxBail, Long> {
+
+	TxBail findByRecId(long recId);
+	
+	TxBail findByStudentId(long studentId);
+	
+	@Query(value = "SELECT * FROM tx_bail WHERE " + "student_id = :studentId " + "HAVING "
+			+ "bail_status = :status ", nativeQuery = true)
+	public TxBail findByStudentIdHAVINGBailStatus(@Param("studentId") long studentId, @Param("status") String status); 
+	
+	//keyword
+		@Query(value = "SELECT * " + "FROM tx_utility_bill " + "WHERE " + "student_id LIKE CONCAT('%' ,:key ,'%') OR "
+				+ "student_fname LIKE CONCAT('%' ,:key ,'%') OR " + "student_lname LIKE CONCAT('%' ,:key ,'%') HAVING " 
+				+ "utility_status = :code OR " + "utility_status = :code2 "
+				+ "ORDER BY " + "rec_id DESC " + "LIMIT 0,1", nativeQuery = true)
+		public Iterable<TxUtilityBill> findTxUtilityBillByKeywordDESC(@Param("key") String key, @Param("code") String status,
+				@Param("code2") String status2);
+	
+	
+}

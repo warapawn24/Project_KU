@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Apr 19, 2021 3:03:38 AM by Hibernate Tools 3.2.2.GA
+// Generated Apr 21, 2021 4:22:11 AM by Hibernate Tools 3.2.2.GA
 
 
 import javax.persistence.Column;
@@ -24,25 +24,25 @@ public class MsFee  implements java.io.Serializable, BaseEntity {
     public static final String P_RECID = "recId";
     public static final String P_TERMID = "termId";
     public static final String P_TYPEID = "typeId";
-    public static final String P_FEEPRICE = "feePrice";
     public static final String P_FEENUMBER = "feeNumber";
+    public static final String P_FEEPRICE = "feePrice";
 
 
     private Long recId;
     private Long termId;
     private Long typeId;
-    private float feePrice;
     private String feeNumber;
+    private float feePrice;
 
     public MsFee() {
     }
 
 
-    public MsFee(Long termId, Long typeId, float feePrice, String feeNumber) {
+    public MsFee(Long termId, Long typeId, String feeNumber, float feePrice) {
         this.termId = termId;
         this.typeId = typeId;
-        this.feePrice = feePrice;
         this.feeNumber = feeNumber;
+        this.feePrice = feePrice;
     }
    
     @Id @GeneratedValue(strategy=IDENTITY)
@@ -75,15 +75,6 @@ public class MsFee  implements java.io.Serializable, BaseEntity {
         this.typeId = typeId;
     }
     
-    @Column(name="fee_price", nullable=false, precision=12, scale=0)
-    public float getFeePrice() {
-        return this.feePrice;
-    }
-    
-    public void setFeePrice(float feePrice) {
-        this.feePrice = feePrice;
-    }
-    
     @Column(name="fee_number", nullable=false, length=20)
     public String getFeeNumber() {
         return this.feeNumber;
@@ -91,6 +82,15 @@ public class MsFee  implements java.io.Serializable, BaseEntity {
     
     public void setFeeNumber(String feeNumber) {
         this.feeNumber = feeNumber;
+    }
+    
+    @Column(name="fee_price", nullable=false, precision=12, scale=0)
+    public float getFeePrice() {
+        return this.feePrice;
+    }
+    
+    public void setFeePrice(float feePrice) {
+        this.feePrice = feePrice;
     }
 
 

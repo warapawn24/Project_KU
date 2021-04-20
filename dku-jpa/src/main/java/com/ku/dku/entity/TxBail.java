@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Mar 22, 2021 12:35:23 AM by Hibernate Tools 3.2.2.GA
+// Generated Apr 21, 2021 4:22:11 AM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -75,9 +75,6 @@ public class TxBail  implements java.io.Serializable, BaseEntity {
     public TxBail() {
     }
 
-    public TxBail(String bailNotation) {
-        this.bailNotation = bailNotation;
-    }
 
     public TxBail(Long roomId, Long studentId, String studentFname, String studentLname, String bailPhone, String bailType, String baillNote, Integer year, String termName, Date bailDate, String bailEquipment, String bailAccouctnum, String bailBank, Float bailCollateral, Float bailWater, Float bailElectricbill, Float bailOther, Float bailPrice, Float bailTotal, String bailStatus, String bailNotation) {
         this.roomId = roomId;
@@ -296,7 +293,7 @@ public class TxBail  implements java.io.Serializable, BaseEntity {
         this.bailStatus = bailStatus;
     }
     
-    @Column(name="bail_notation", nullable=false)
+    @Column(name="bail_notation")
     public String getBailNotation() {
         return this.bailNotation;
     }

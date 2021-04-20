@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Feb 11, 2021 11:10:26 PM by Hibernate Tools 3.2.2.GA
+// Generated Apr 20, 2021 6:24:47 PM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -29,30 +29,63 @@ public class TxReserve  implements java.io.Serializable, BaseEntity {
     public static final String P_BUILDINGID = "buildingId";
     public static final String P_ROOMID = "roomId";
     public static final String P_RESERVEDATE = "reserveDate";
-    public static final String P_RESERVEDUEDATE = "reserveDuedate";
     public static final String P_RESERVESTATUS = "reserveStatus";
+    public static final String P_STUDENTID = "studentId";
+    public static final String P_STUDENTFNAME = "studentFname";
+    public static final String P_STUDENTLNAME = "studentLname";
+    public static final String P_FEEID = "feeId";
+    public static final String P_SETPAYMENTSTART = "setPaymentstart";
+    public static final String P_SETPAYMENTDUE = "setPaymentDue";
     public static final String P_RESERVEROOMSTATUS = "reserveRoomstatus";
+    public static final String P_YEAR = "year";
+    public static final String P_RECEIPTNUMBER = "receiptNumber";
+    public static final String P_RECEIPTDATE = "receiptDate";
+    public static final String P_OFFICERID = "officerId";
+    public static final String P_TERMID = "termId";
+    public static final String P_BUILDINGTYPEID = "buildingTypeId";
 
 
     private Long recId;
     private Long buildingId;
     private Long roomId;
     private Date reserveDate;
-    private Date reserveDuedate;
     private String reserveStatus;
+    private Long studentId;
+    private String studentFname;
+    private String studentLname;
+    private Long feeId;
+    private Date setPaymentstart;
+    private Date setPaymentDue;
     private Integer reserveRoomstatus;
+    private Integer year;
+    private Integer receiptNumber;
+    private Date receiptDate;
+    private Long officerId;
+    private Long termId;
+    private Long buildingTypeId;
 
     public TxReserve() {
     }
 
 
-    public TxReserve(Long buildingId, Long roomId, Date reserveDate, Date reserveDuedate, String reserveStatus, Integer reserveRoomstatus) {
+    public TxReserve(Long buildingId, Long roomId, Date reserveDate, String reserveStatus, Long studentId, String studentFname, String studentLname, Long feeId, Date setPaymentstart, Date setPaymentDue, Integer reserveRoomstatus, Integer year, Integer receiptNumber, Date receiptDate, Long officerId, Long termId, Long buildingTypeId) {
         this.buildingId = buildingId;
         this.roomId = roomId;
         this.reserveDate = reserveDate;
-        this.reserveDuedate = reserveDuedate;
         this.reserveStatus = reserveStatus;
+        this.studentId = studentId;
+        this.studentFname = studentFname;
+        this.studentLname = studentLname;
+        this.feeId = feeId;
+        this.setPaymentstart = setPaymentstart;
+        this.setPaymentDue = setPaymentDue;
         this.reserveRoomstatus = reserveRoomstatus;
+        this.year = year;
+        this.receiptNumber = receiptNumber;
+        this.receiptDate = receiptDate;
+        this.officerId = officerId;
+        this.termId = termId;
+        this.buildingTypeId = buildingTypeId;
     }
    
     @Id
@@ -84,8 +117,8 @@ public class TxReserve  implements java.io.Serializable, BaseEntity {
     public void setRoomId(Long roomId) {
         this.roomId = roomId;
     }
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="reserve_date", length=19)
+    @Temporal(TemporalType.DATE)
+    @Column(name="reserve_date", length=10)
     @DateTimeFormat(pattern="dd/MM/yyyy")
     public Date getReserveDate() {
         return this.reserveDate;
@@ -93,15 +126,6 @@ public class TxReserve  implements java.io.Serializable, BaseEntity {
     
     public void setReserveDate(Date reserveDate) {
         this.reserveDate = reserveDate;
-    }
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="reserve_duedate", length=19)
-    public Date getReserveDuedate() {
-        return this.reserveDuedate;
-    }
-    
-    public void setReserveDuedate(Date reserveDuedate) {
-        this.reserveDuedate = reserveDuedate;
     }
     
     @Column(name="reserve_status")
@@ -113,6 +137,60 @@ public class TxReserve  implements java.io.Serializable, BaseEntity {
         this.reserveStatus = reserveStatus;
     }
     
+    @Column(name="student_id")
+    public Long getStudentId() {
+        return this.studentId;
+    }
+    
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
+    }
+    
+    @Column(name="student_fname")
+    public String getStudentFname() {
+        return this.studentFname;
+    }
+    
+    public void setStudentFname(String studentFname) {
+        this.studentFname = studentFname;
+    }
+    
+    @Column(name="student_lname")
+    public String getStudentLname() {
+        return this.studentLname;
+    }
+    
+    public void setStudentLname(String studentLname) {
+        this.studentLname = studentLname;
+    }
+    
+    @Column(name="fee_id")
+    public Long getFeeId() {
+        return this.feeId;
+    }
+    
+    public void setFeeId(Long feeId) {
+        this.feeId = feeId;
+    }
+    @Temporal(TemporalType.DATE)
+    @Column(name="set_paymentstart", length=10)
+    public Date getSetPaymentstart() {
+        return this.setPaymentstart;
+    }
+    
+    public void setSetPaymentstart(Date setPaymentstart) {
+        this.setPaymentstart = setPaymentstart;
+    }
+    @Temporal(TemporalType.DATE)
+    @Column(name="set_payment_due", length=10)
+    public Date getSetPaymentDue() {
+        return this.setPaymentDue;
+    }
+    
+    public void setSetPaymentDue(Date setPaymentDue) {
+        this.setPaymentDue = setPaymentDue;
+    }
+    
     @Column(name="reserve_roomstatus")
     public Integer getReserveRoomstatus() {
         return this.reserveRoomstatus;
@@ -120,6 +198,61 @@ public class TxReserve  implements java.io.Serializable, BaseEntity {
     
     public void setReserveRoomstatus(Integer reserveRoomstatus) {
         this.reserveRoomstatus = reserveRoomstatus;
+    }
+    
+    @Column(name="year")
+    public Integer getYear() {
+        return this.year;
+    }
+    
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+    
+    @Column(name="receipt_number")
+    public Integer getReceiptNumber() {
+        return this.receiptNumber;
+    }
+    
+    public void setReceiptNumber(Integer receiptNumber) {
+        this.receiptNumber = receiptNumber;
+    }
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="receipt_date", length=19)
+    @DateTimeFormat(pattern="dd/MM/yyyy")
+    public Date getReceiptDate() {
+        return this.receiptDate;
+    }
+    
+    public void setReceiptDate(Date receiptDate) {
+        this.receiptDate = receiptDate;
+    }
+    
+    @Column(name="officer_id")
+    public Long getOfficerId() {
+        return this.officerId;
+    }
+    
+    public void setOfficerId(Long officerId) {
+        this.officerId = officerId;
+    }
+    
+    @Column(name="term_id")
+    public Long getTermId() {
+        return this.termId;
+    }
+    
+    public void setTermId(Long termId) {
+        this.termId = termId;
+    }
+    
+    @Column(name="building_type_id")
+    public Long getBuildingTypeId() {
+        return this.buildingTypeId;
+    }
+    
+    public void setBuildingTypeId(Long buildingTypeId) {
+        this.buildingTypeId = buildingTypeId;
     }
 
 

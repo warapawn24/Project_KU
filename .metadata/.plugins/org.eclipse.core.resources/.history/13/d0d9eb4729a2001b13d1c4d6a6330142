@@ -1,0 +1,26 @@
+package com.ku.dku.bean;
+
+public class adminSearchPostRequest {
+
+	private String keyword;
+
+	
+	public adminSearchPostRequest() {
+		super();
+	}
+
+	public adminSearchPostRequest(String keyword) {
+		super();
+		this.keyword = keyword;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
+	
+}

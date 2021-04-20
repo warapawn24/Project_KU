@@ -1,5 +1,6 @@
 package com.ku.dku.service;
 
+import java.nio.channels.SeekableByteChannel;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -8,21 +9,26 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ku.dku.constant.LookupConstant;
 import com.ku.dku.entity.MsRepairYear;
+import com.ku.dku.entity.TxOfficer;
 import com.ku.dku.entity.TxRepairNotification;
 import com.ku.dku.repository.MsRepairYearRepository;
+import com.ku.dku.repository.TxOfficerRepository;
 import com.ku.dku.repository.TxRepairNotificationRepository;
 
 @Service
 public class RepairService {
 	@Autowired private TxRepairNotificationRepository txRepairNotificationRepository;
 	@Autowired private MsRepairYearRepository msRepairYearRepository;
+	@Autowired private TxOfficerRepository txOfficerRepository;
 	
 	public boolean repair(TxRepairNotification repairData) {
 	
@@ -33,6 +39,7 @@ public class RepairService {
 		txRepair.setStudentLname(repairData.getStudentLname());
 		txRepair.setRepairPhone(repairData.getRepairPhone());
 		txRepair.setRepairList(repairData.getRepairList());
+		txRepair.setRepairStatus(LookupConstant.REPAIR_STATUS_NOTALREADY);
 		txRepairNotificationRepository.save(txRepair);
 		
 		
@@ -80,7 +87,7 @@ public class RepairService {
 		txRepairNotification.setRepairDate(date);
 		txRepairNotification.setYearNumber(num);
 		txRepairNotification.setYear(curyear);
-		txRepairNotification.setRepairStatus("not approved");
+		txRepairNotification.setRepairStatus(LookupConstant.REPAIR_STATUS_NOTALREADY);
 		txRepairNotificationRepository.save(txRepairNotification);
 		
 		
@@ -102,5 +109,35 @@ public class RepairService {
 		Iterable<TxRepairNotification> findByStatus = txRepairNotificationRepository.findAllByRepairStatusAndListOrderByRecIdDESC(status, keyword);
 		return findByStatus;
 		
+	}
+	
+	//เพิ่มกำหนดการ
+	public boolean addDate(TxRepairNotification repair) {
+		
+		TxRepairNotification addData = txRepairNotificationRepository.findByRecId(repair.getRecId());
+		
+		addData.setRepairDuedate(repair.getRepairDuedate());
+		addData.setOfficerUsername(repair.getOfficerUsername());
+		addData.setRepairStatus(LookupConstant.REPAIR_STATUS_WAIT);
+		txRepairNotificationRepository.save(addData);
+	
+		return true;
+		
+	}
+	
+	//ViewStudent
+	public Iterable<TxRepairNotification> view(long studentId,String status){
+		Iterable<TxRepairNotification> view = txRepairNotificationRepository.findByStudentIdHAVINGRepairStatusOrderByRecIdDESC(studentId, status);
+		return view;
+	}
+	
+	//เปลี่ยนstatus
+	public boolean changeStatus(long repairId,String status) {
+		
+		TxRepairNotification change = txRepairNotificationRepository.findByRecId(repairId);
+		change.setRepairStatus(status);
+		txRepairNotificationRepository.save(change);
+		
+		return true;
 	}
 }

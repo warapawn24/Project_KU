@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Apr 18, 2021 2:24:09 AM by Hibernate Tools 3.2.2.GA
+// Generated Apr 20, 2021 4:43:22 AM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -63,7 +63,7 @@ public class TxSetDate  implements java.io.Serializable, BaseEntity {
         this.year = year;
     }
    
-    @Id
+    @Id 
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     
     @Column(name="rec_id", unique=true, nullable=false)
@@ -120,7 +120,7 @@ public class TxSetDate  implements java.io.Serializable, BaseEntity {
         this.setPaymentstart = setPaymentstart;
     }
     @Temporal(TemporalType.DATE)
-    @Column(name="set_paymentDue", nullable=false, length=10)
+    @Column(name="set_payment_due", nullable=false, length=10)
     public Date getSetPaymentDue() {
         return this.setPaymentDue;
     }

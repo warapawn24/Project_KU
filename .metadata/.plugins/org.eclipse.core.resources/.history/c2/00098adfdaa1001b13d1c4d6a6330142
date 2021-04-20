@@ -1,0 +1,49 @@
+package com.ku.dku.bean;
+
+import java.util.Date;
+
+public class SetDateBailRequest {
+
+	private Date bailStart;
+	private Date bailDue;
+	private long term;
+	private Integer year;
+	
+	
+	public SetDateBailRequest() {
+		super();
+	}
+	public SetDateBailRequest(Date bailStart, Date bailDue, long term, Integer year) {
+		super();
+		this.bailStart = bailStart;
+		this.bailDue = bailDue;
+		this.term = term;
+		this.year = year;
+	}
+	public Date getBailStart() {
+		return bailStart;
+	}
+	public void setBailStart(Date bailStart) {
+		this.bailStart = bailStart;
+	}
+	public Date getBailDue() {
+		return bailDue;
+	}
+	public void setBailDue(Date bailDue) {
+		this.bailDue = bailDue;
+	}
+	public long getTerm() {
+		return term;
+	}
+	public void setTerm(long term) {
+		this.term = term;
+	}
+	public Integer getYear() {
+		return year;
+	}
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+	
+	
+}

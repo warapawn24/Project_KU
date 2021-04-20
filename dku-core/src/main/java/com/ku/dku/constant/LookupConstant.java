@@ -27,4 +27,17 @@ public class LookupConstant {
 	//SetDate
 	public static String SET_DATE_STATUS_OPEN ="open";
 	public static String SET_DATE_STATUS_CLOSE ="close";
+	
+	//Reserve
+	public static String RESERVE_STATUS_UNPAID = "unpaid";
+	public static String RESERVE_STATUS_PAID = "paid";
+	
+	//response
+	public static String RESPONSE_STATUS_SUCCESS = "success";
+	public static String RESPONSE_STATUS_FAILED = "failed";
+	
+	//repair
+	public static String REPAIR_STATUS_NOTALREADY ="not already";
+	public static String REPAIR_STATUS_WAIT = "wait";
+	public static String REPAIR_STATUS_DONE = "done";
 }

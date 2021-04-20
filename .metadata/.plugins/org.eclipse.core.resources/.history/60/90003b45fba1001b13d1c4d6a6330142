@@ -1,0 +1,28 @@
+package com.ku.dku.bean;
+
+import java.util.List;
+
+public class ListViewRepairResponse {
+
+	private List<ViewRepairResponse> detail;
+
+	
+	public ListViewRepairResponse() {
+		super();
+	}
+
+	public ListViewRepairResponse(List<ViewRepairResponse> detail) {
+		super();
+		this.detail = detail;
+	}
+
+	public List<ViewRepairResponse> getDetail() {
+		return detail;
+	}
+
+	public void setDetail(List<ViewRepairResponse> detail) {
+		this.detail = detail;
+	}
+	
+	
+}

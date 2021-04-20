@@ -20,5 +20,9 @@ public interface TxRepairNotificationRepository extends JpaRepository<TxRepairNo
 				@Query(value = "SELECT * " + "FROM tx_repair_notification " + "WHERE " + "repair_list LIKE CONCAT('%' ,:key ,'%') " + "HAVING "+ "repair_status = :code " + "ORDER BY "
 						+ "rec_id DESC ", nativeQuery = true)
 				Iterable<TxRepairNotification> findAllByRepairStatusAndListOrderByRecIdDESC(@Param("code") String status,@Param("key") String keyword);	
-		
+	
+	// GetหาตามStusent,Statusที่กำหนด
+	@Query(value = "SELECT * " + "FROM tx_repair_notification " + "WHERE "+ "student_id = :studentId HAVING " + "repair_status = :code " + "ORDER BY "
+						+ "rec_id DESC ", nativeQuery = true)
+	Iterable<TxRepairNotification> findByStudentIdHAVINGRepairStatusOrderByRecIdDESC(@Param("studentId") long studentId,@Param("code") String status);
 }

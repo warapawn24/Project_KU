@@ -1,5 +1,8 @@
 package com.ku.dku.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,6 +22,8 @@ import com.ku.dku.bean.AddOfficerProfileResponse;
 import com.ku.dku.bean.ChangeOfficerStatusRequest;
 import com.ku.dku.bean.ChangeOfficerStatusResponse;
 import com.ku.dku.bean.FileStatusResponse;
+import com.ku.dku.bean.ListShowAllInfoAdminResponse;
+import com.ku.dku.bean.ShowAllInfoAdminResponse;
 import com.ku.dku.bean.ShowInfoRequest;
 import com.ku.dku.bean.ShowInfoResponse;
 import com.ku.dku.entity.LkRole;
@@ -26,6 +31,7 @@ import com.ku.dku.entity.MsFile;
 import com.ku.dku.entity.TxOfficer;
 import com.ku.dku.repository.LkRoleRepository;
 import com.ku.dku.repository.MsFileRepository;
+import com.ku.dku.repository.TxOfficerRepository;
 import com.ku.dku.service.AdminProfileService;
 import com.ku.dku.service.FileService;
 
@@ -36,6 +42,7 @@ public class AdminProfileController {
 	@Autowired private AdminProfileService adminProfileService;
 	@Autowired private LkRoleRepository lkRoleRepository;
 	@Autowired private FileService fileService;
+	@Autowired private TxOfficerRepository txOfficerRepository;
 	
 	@RequestMapping(value = "/updateProfile",method = RequestMethod.POST)
 	public @ResponseBody AddOfficerProfileResponse updateProfile(@RequestBody AddOfficerProfileRequest request) {
@@ -115,7 +122,30 @@ public class AdminProfileController {
 		return role; }
 		
 	
-	
+	//ดึงข้อมูลพนักงานทั้งหมด
+	@GetMapping(value = "/getAllOfficer")
+	public @ResponseBody ListShowAllInfoAdminResponse getAll() {
+		
+		ListShowAllInfoAdminResponse response = new ListShowAllInfoAdminResponse();
+		
+		List<ShowAllInfoAdminResponse> detail = new ArrayList<ShowAllInfoAdminResponse>();
+		Iterable<TxOfficer> officer = txOfficerRepository.findAll();
+		for (TxOfficer txOfficer : officer) {
+			ShowAllInfoAdminResponse data = new ShowAllInfoAdminResponse();
+			data.setOfficerId(txOfficer.getRecId());
+			data.setOfficerFname(txOfficer.getOfficerFname());
+			data.setOfficerLname(txOfficer.getOfficerLname());
+			data.setOfficerEmail(txOfficer.getOfficerEmail());
+			
+			LkRole role = lkRoleRepository.findByRecId(txOfficer.getOfficerRoleId());
+			
+			data.setOfficerRole(role.getRoleName());
+			data.setOfficerStatus(txOfficer.getOfficerStatus());
+			detail.add(data);
+			response.setDetail(detail);
+		}
+		return response;
+	}
 	
 	@PostMapping(value = "/uploadFile")
 	public ResponseEntity<FileStatusResponse> uploadFile(@RequestParam("file") MultipartFile file,

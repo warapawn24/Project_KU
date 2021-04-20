@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +30,7 @@ import com.ku.dku.entity.TxOfficer;
 import com.ku.dku.entity.TxUtilityBill;
 import com.ku.dku.repository.LkRoleRepository;
 import com.ku.dku.repository.TxOfficerRepository;
+import com.ku.dku.repository.TxUtilityBillRepository;
 import com.ku.dku.service.UtilityBillService;
 
 @RestController
@@ -38,6 +40,7 @@ public class UtilityBillController {
 	@Autowired private UtilityBillService utilityBillService;
 	@Autowired private TxOfficerRepository txOfficerRepository;
 	@Autowired private LkRoleRepository lkRoleRepository;
+	@Autowired private TxUtilityBillRepository txUtilityBillRepository;
 	
 	@RequestMapping(value = "/utilityData",method = RequestMethod.POST)
 	public @ResponseBody UtilityBillResponse utilityData(@RequestBody UtilityBillRequest request) {
@@ -111,6 +114,12 @@ public class UtilityBillController {
 		Iterable<TxUtilityBill> search = utilityBillService.findByKeyword(request.getKeyword(), LookupConstant.UTILITY_STATUS_PAID, LookupConstant.UTILITY_STATUS_UNPAID);
 		
 		return search;
+	}
+	
+	@GetMapping(value = "/adminView")
+	public @ResponseBody Iterable<TxUtilityBill> adminView(){
+		Iterable<TxUtilityBill> view = txUtilityBillRepository.findAll();
+		return view;
 	}
 	
 	//AdminReceipt

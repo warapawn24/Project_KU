@@ -4,9 +4,11 @@ C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxU
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\NotificationService.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\constant\LookupConstant.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\bean\ListBailEquipmentRequest.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsFeeRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\UtilityBillService.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TXBailEquipmentRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxReserveDetailRepository.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\LkTypeRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsBuildingOneRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\AdminProfileService.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxRepairNotificationRepository.java
@@ -14,6 +16,7 @@ C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsR
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\service\LoginService.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsFileRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsBuildingRepository.java
+C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxSetDateBailRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\TxReserveRepository.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\bean\ListBailTypeRequest.java
 C:\Users\WIN10_Mall7\KU_Project\dku-core\src\main\java\com\ku\dku\repository\MsBuildingEightRepository.java

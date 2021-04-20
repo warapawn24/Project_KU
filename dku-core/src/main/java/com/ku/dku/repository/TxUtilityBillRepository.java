@@ -25,6 +25,6 @@ public interface TxUtilityBillRepository extends JpaRepository<TxUtilityBill,Lon
 			+ "student_fname LIKE CONCAT('%' ,:key ,'%') OR " + "student_lname LIKE CONCAT('%' ,:key ,'%') HAVING " 
 			+ "utility_status = :code OR " + "utility_status = :code2 "
 			+ "ORDER BY " + "rec_id DESC " + "LIMIT 0,1", nativeQuery = true)
-	Iterable<TxUtilityBill> findTxUtilityBillByKeywordDESC(@Param("key") String key, @Param("code") String status,
+	public Iterable<TxUtilityBill> findTxUtilityBillByKeywordDESC(@Param("key") String key, @Param("code") String status,
 			@Param("code2") String status2);
 }

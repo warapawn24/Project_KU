@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Apr 19, 2021 3:03:38 AM by Hibernate Tools 3.2.2.GA
+// Generated Apr 21, 2021 4:22:11 AM by Hibernate Tools 3.2.2.GA
 
 
 import java.util.Date;
@@ -120,7 +120,7 @@ public class TxSetDate  implements java.io.Serializable, BaseEntity {
         this.setPaymentstart = setPaymentstart;
     }
     @Temporal(TemporalType.DATE)
-    @Column(name="set_paymentDue", nullable=false, length=10)
+    @Column(name="set_payment_due", nullable=false, length=10)
     public Date getSetPaymentDue() {
         return this.setPaymentDue;
     }

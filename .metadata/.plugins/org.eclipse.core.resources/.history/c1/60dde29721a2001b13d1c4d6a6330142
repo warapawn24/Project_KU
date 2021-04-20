@@ -1,0 +1,43 @@
+package com.ku.dku.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ku.dku.entity.TxPost;
+import com.ku.dku.entity.TxStudent;
+import com.ku.dku.repository.TxPostRepository;
+import com.ku.dku.repository.TxStudentRepository;
+
+@Service
+public class PostService {
+	
+	@Autowired private TxPostRepository txPostRepository;
+	@Autowired private TxStudentRepository txStudentRepository;
+	
+	public Iterable<TxPost> checkPost(long studentId) {
+		
+		Iterable<TxPost> post = txPostRepository.findByStudentIdOrderByRecIdDESC(studentId);
+		
+		return post;
+		
+	}
+	
+	//แอดมินเพิ่มพัสดุ
+	public boolean updatePost(long studentId) {
+		
+		TxPost post = new TxPost();
+		post.setStudentId(studentId);
+		
+		TxStudent student = txStudentRepository.findByStudentId(studentId);
+		post.setStudentFname(student.getStudentFname());
+		post.setStudentLname(student.getStudentLname());
+		
+		long recId = post.getRecId();
+		String postCode=String.valueOf(recId);
+		
+		post.setPostCode(postCode);
+		
+		txPostRepository.save(post);
+		
+		return true;
+}

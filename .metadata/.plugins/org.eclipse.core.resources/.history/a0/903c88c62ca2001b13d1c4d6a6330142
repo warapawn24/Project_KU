@@ -1,0 +1,27 @@
+package com.ku.dku.bean;
+
+public class ChangeStatusPostRequest {
+	
+	private String postStatus;
+
+	
+	public ChangeStatusPostRequest() {
+		super();
+	}
+
+	public ChangeStatusPostRequest(String postStatus) {
+		super();
+		this.postStatus = postStatus;
+	}
+
+	public String getPostStatus() {
+		return postStatus;
+	}
+
+	public void setPostStatus(String postStatus) {
+		this.postStatus = postStatus;
+	}
+	
+	
+
+}

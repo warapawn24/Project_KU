@@ -1,2 +1,6 @@
 1618767587166	Rename type 'AdminUpdateUtilityDetail'
 1618772084170	Delete element
+1618856512931	Rename type 'AdminViewReserveRepository'
+1618938613750	Rename type 'ViewRepairResponse'
+1618958358087	Rename type 'adminSearchPostResponse'
+1618958374914	Rename type 'adminSearchPostRequest'

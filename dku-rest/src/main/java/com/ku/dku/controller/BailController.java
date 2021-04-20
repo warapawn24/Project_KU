@@ -1,7 +1,11 @@
 package com.ku.dku.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ku.dku.bean.AdminChangeStatusBailRequest;
+import com.ku.dku.bean.AdminChangeStatusBailResponse;
+import com.ku.dku.bean.AdminViewBailRequest;
+import com.ku.dku.bean.AdminViewBailResponse;
 import com.ku.dku.bean.BailAmountResponse;
 import com.ku.dku.bean.CheckStatusRequest;
 import com.ku.dku.bean.CheckStatusResponse;
@@ -18,14 +26,18 @@ import com.ku.dku.bean.CreateBailResponse;
 import com.ku.dku.bean.CreatebailRequest;
 import com.ku.dku.bean.DetailBailStatusRequest;
 import com.ku.dku.bean.DetailBailStatusResponse;
+import com.ku.dku.bean.ListAdminViewBailResponse;
 import com.ku.dku.bean.ListBailEquipmentRequest;
 import com.ku.dku.bean.ListBailTotalResponse;
 import com.ku.dku.bean.ListBailTypeRequest;
+import com.ku.dku.bean.SetDateBailRequest;
+import com.ku.dku.bean.SetDateBailResponse;
 import com.ku.dku.bean.UpdateBailRequest;
 import com.ku.dku.bean.UpdateBailResponse;
 import com.ku.dku.constant.LookupConstant;
 import com.ku.dku.entity.LkTerm;
 import com.ku.dku.entity.TxBail;
+import com.ku.dku.entity.TxSetDateBail;
 import com.ku.dku.repository.LkTermRepository;
 import com.ku.dku.repository.TxBailRepository;
 import com.ku.dku.service.BailService;
@@ -189,6 +201,91 @@ public class BailController {
 		
 	}
 	
+	//setDate
+	@RequestMapping(value = "/setDate",method = RequestMethod.POST)
+	public @ResponseBody SetDateBailResponse setDate(@RequestBody SetDateBailRequest request) throws ParseException {
 	
+		String pattern = "yyyy-MM-dd";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern ,new Locale("en", "EN"));
+		
+		Date start = simpleDateFormat.parse(request.getBailStart());
+		Date due = simpleDateFormat.parse(request.getBailDue());
+
+		
+		SetDateBailResponse response = new SetDateBailResponse();
+		
+		TxSetDateBail txSetDateBail = new TxSetDateBail();
+		txSetDateBail.setSetBailStart(start);
+		txSetDateBail.setSetBailDue(due);
+		txSetDateBail.setSetPaymentStart(start);
+		txSetDateBail.setSetPaymentDue(due);
+		txSetDateBail.setTermId(request.getTerm());
+		txSetDateBail.setYear(request.getYear());
+		
+		boolean setDate = bilService.setDateBail(txSetDateBail);
+		
+		if (setDate) {
+			response.setStatusResponse(LookupConstant.RESPONSE_STATUS_SUCCESS);
+		}else {
+			response.setStatusResponse(LookupConstant.RESPONSE_STATUS_FAILED);
+		}
+		return response;
+	}
+	
+	//AdminView
+	@RequestMapping(value = "/adminView",method = RequestMethod.POST)
+	public @ResponseBody ListAdminViewBailResponse view(@RequestBody AdminViewBailRequest request) {
+		
+		ListAdminViewBailResponse response = new ListAdminViewBailResponse();
+		
+		List<AdminViewBailResponse> detail = new ArrayList<AdminViewBailResponse>();
+		Iterable<TxBail> listBail = bilService.viewBail(request.getBailStatus(), request.getBailBank());
+		for (TxBail txBail : listBail) {
+			AdminViewBailResponse data = new AdminViewBailResponse();
+			data.setBailId(txBail.getRecId());
+			data.setBailDate(txBail.getBailDate());
+			data.setRoomId(txBail.getRoomId());
+			data.setBailNotation(txBail.getBailNotation());
+			data.setBailStatus(txBail.getBailStatus());
+			data.setStudentId(txBail.getStudentId());
+			
+			detail.add(data);
+			response.setDetail(detail);
+		}
+		
+		return response;
+			
+	}
+	
+	//changeStatus
+	@RequestMapping(value = "/changeStatus",method = RequestMethod.POST)
+	public @ResponseBody AdminChangeStatusBailResponse changeStatus(@RequestBody AdminChangeStatusBailRequest request) {
+		
+		AdminChangeStatusBailResponse response = new AdminChangeStatusBailResponse();
+		
+		
+		
+		TxBail changeStatus = txBailRepository.findByRecId(request.getBailId());
+		if (request.getBailStatus().equals("not approved")) {
+			changeStatus.setBailStatus(LookupConstant.BAIL_STATUS_NOTAPPROVED);
+			changeStatus.setBailNotation(request.getBailNotation());
+			txBailRepository.save(changeStatus);
+			
+			if (request.getBailNotation()==null) {
+				response.setStatusResponse("Notation No Data");
+			}else {
+				response.setStatusResponse(LookupConstant.RESPONSE_STATUS_SUCCESS);
+			}
+			
+					
+			
+		}else {
+			changeStatus.setBailStatus(request.getBailStatus());
+			changeStatus.setBailNotation(request.getBailNotation());
+			txBailRepository.save(changeStatus);
+			response.setStatusResponse(LookupConstant.RESPONSE_STATUS_SUCCESS);
+		}
+		return response;
+	}
 	
 }
