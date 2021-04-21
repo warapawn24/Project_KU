@@ -1,0 +1,60 @@
+package com.ku.dku.bean;
+
+import org.springframework.http.ResponseEntity;
+
+public class AdminUpdateRelationResponse {
+	
+	
+	private String relationName;
+	private String description;
+	private String fileName;
+	private String statusResponse;
+	private ResponseEntity<byte[]> file;
+	
+	
+	public AdminUpdateRelationResponse() {
+		super();
+	}
+	public AdminUpdateRelationResponse(String relationName, String description, String fileName, String statusResponse,
+			ResponseEntity<byte[]> file) {
+		super();
+		this.relationName = relationName;
+		this.description = description;
+		this.fileName = fileName;
+		this.statusResponse = statusResponse;
+		this.file = file;
+	}
+	public String getRelationName() {
+		return relationName;
+	}
+	public void setRelationName(String relationName) {
+		this.relationName = relationName;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getStatusResponse() {
+		return statusResponse;
+	}
+	public void setStatusResponse(String statusResponse) {
+		this.statusResponse = statusResponse;
+	}
+	public ResponseEntity<byte[]> getFile() {
+		return file;
+	}
+	public void setFile(ResponseEntity<byte[]> file) {
+		this.file = file;
+	}
+	
+	
+
+}

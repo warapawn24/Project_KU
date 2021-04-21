@@ -1,30 +1,32 @@
 package com.ku.dku.bean;
 
 public class BookRoomRequest {
-	private long studentIdRequest;
-	private long roomIdRequest;
+	private long buildingId;
+	private long roomId;
 	
 	
 	public BookRoomRequest() {
 		super();
 	}
-	public BookRoomRequest(long studentIdRequest, long roomIdRequest) {
+	public BookRoomRequest(long buildingId, long roomId) {
 		super();
-		this.studentIdRequest = studentIdRequest;
-		this.roomIdRequest = roomIdRequest;
+		this.buildingId = buildingId;
+		this.roomId = roomId;
 	}
-	public long getStudentIdRequest() {
-		return studentIdRequest;
+	public long getBuildingId() {
+		return buildingId;
 	}
-	public void setStudentIdRequest(long studentIdRequest) {
-		this.studentIdRequest = studentIdRequest;
+	public void setBuildingId(long buildingId) {
+		this.buildingId = buildingId;
 	}
-	public long getRoomIdRequest() {
-		return roomIdRequest;
+	public long getRoomId() {
+		return roomId;
 	}
-	public void setRoomIdRequest(long roomIdRequest) {
-		this.roomIdRequest = roomIdRequest;
+	public void setRoomId(long roomId) {
+		this.roomId = roomId;
 	}
+	
+	
 	
 	
 }

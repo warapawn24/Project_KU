@@ -2,6 +2,7 @@ package com.ku.dku.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,9 +19,11 @@ import com.ku.dku.bean.ChangePasswordRequest;
 import com.ku.dku.bean.ChangePasswordResponse;
 import com.ku.dku.bean.LoginRequest;
 import com.ku.dku.bean.LoginResponse;
+import com.ku.dku.entity.LkRole;
 import com.ku.dku.entity.MsFile;
 import com.ku.dku.entity.TxOfficer;
 import com.ku.dku.entity.TxStudent;
+import com.ku.dku.repository.LkRoleRepository;
 import com.ku.dku.repository.TxOfficerRepository;
 import com.ku.dku.service.LoginService;
 import com.ku.dku.service.NotificationService;
@@ -30,6 +33,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.LoggerFactory;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping(value = "/adminAuth")
 public class AdminAuthController {
 
@@ -37,10 +41,12 @@ public class AdminAuthController {
 	@Autowired private TxOfficerRepository txOfficerRepository;
 	@Autowired private BCryptPasswordEncoder bCryptPasswordEncoder;
 	@Autowired private LoginService loginService;
+	@Autowired private LkRoleRepository lkRoleRepository;
 	
 	private org.slf4j.Logger logger = LoggerFactory.getLogger(AdminAuthController.class);
 	
 	//login
+	@CrossOrigin(origins = "http://192.168.43.126:8080")
 	@RequestMapping(value = "/adminLogin",method = RequestMethod.POST)
 	public @ResponseBody AdminLoginResponse adminlogin(@RequestBody AdminLoginRequest request, HttpServletRequest req ) {
 		AdminLoginResponse response = new AdminLoginResponse();
@@ -69,6 +75,10 @@ public class AdminAuthController {
 			response.setOfficerFnameResponse(getTxOfficer.getOfficerFname());
 			response.setOfficerLnameResponse(getTxOfficer.getOfficerLname());
 			response.setOfficerLoginfirst(getTxOfficer.getOfficerLoginfirstchange());
+			
+			LkRole role = lkRoleRepository.findByRecId(getTxOfficer.getOfficerRoleId());
+			response.setOfficerRole(role.getRoleName());
+			
 			response.setStatusResponse("success");
 			
 			//getFiles

@@ -15,6 +15,7 @@ import com.ku.dku.entity.MsBuildingSeven;
 import com.ku.dku.entity.MsBuildingSix;
 import com.ku.dku.entity.MsBuildingThree;
 import com.ku.dku.entity.MsBuildingTwo;
+import com.ku.dku.repository.LkBuildingRepository;
 import com.ku.dku.repository.MsBuildingEightRepository;
 import com.ku.dku.repository.MsBuildingFiveRepository;
 import com.ku.dku.repository.MsBuildingFourRepository;
@@ -28,22 +29,19 @@ import com.ku.dku.repository.MsBuildingTwoRepository;
 @Service
 public class BuildingService {
 	
-	@Autowired private MsBuildingEightRepository msBuildingEightRepository;
-	@Autowired private MsBuildingFiveRepository msBuildingFiveRepository;
-	@Autowired private MsBuildingFourRepository msBuildingFourRepository;	
-	@Autowired private MsBuildingOneRepository	msBuildingOneRepository;
-	@Autowired private MsBuildingSevenRepository msBuildingSevenRepository;
-	@Autowired private MsBuildingSixRepository msBuildingSixRepository;
-	@Autowired private MsBuildingThreeRepository msBuildingThreeRepository;
-	@Autowired private MsBuildingTwoRepository msBuildingTwoRepository;
+	@Autowired private LkBuildingRepository lkBuildingRepository;
 	
+	//เพิ่มรูป
 	
-	//GetNumber
-	public boolean getNumber (long requestBuildingId,long roomId) {
-
+	public boolean updatePhoto() {
 		return false;
 		
 	}
+	
+	
+	
+	
+	
 
 	
 		

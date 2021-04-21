@@ -7,19 +7,21 @@ public class AdminLoginResponse {
 	private String officerLnameResponse;
 	private String statusResponse;
 	private Integer officerLoginfirst;
+	private String officerRole;
 	
 	
 	public AdminLoginResponse() {
 		super();
 	}
 	public AdminLoginResponse(long officerIdResponse, String officerFnameResponse, String officerLnameResponse,
-			String statusResponse, Integer officerLoginfirst) {
+			String statusResponse, Integer officerLoginfirst, String officerRole) {
 		super();
 		this.officerIdResponse = officerIdResponse;
 		this.officerFnameResponse = officerFnameResponse;
 		this.officerLnameResponse = officerLnameResponse;
 		this.statusResponse = statusResponse;
 		this.officerLoginfirst = officerLoginfirst;
+		this.officerRole = officerRole;
 	}
 	public long getOfficerIdResponse() {
 		return officerIdResponse;
@@ -50,6 +52,12 @@ public class AdminLoginResponse {
 	}
 	public void setOfficerLoginfirst(Integer officerLoginfirst) {
 		this.officerLoginfirst = officerLoginfirst;
+	}
+	public String getOfficerRole() {
+		return officerRole;
+	}
+	public void setOfficerRole(String officerRole) {
+		this.officerRole = officerRole;
 	}
 	
 	

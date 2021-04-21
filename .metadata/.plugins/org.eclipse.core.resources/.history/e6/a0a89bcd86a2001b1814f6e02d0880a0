@@ -1,0 +1,50 @@
+package com.ku.dku.bean;
+
+public class AdminUpdateRelationResponse {
+	
+	
+	private String relationName;
+	private String description;
+	private String fileName;
+	private String statusResponse;
+	
+	
+	public AdminUpdateRelationResponse() {
+		super();
+	}
+	public AdminUpdateRelationResponse(String relationName, String description, String fileName,
+			String statusResponse) {
+		super();
+		this.relationName = relationName;
+		this.description = description;
+		this.fileName = fileName;
+		this.statusResponse = statusResponse;
+	}
+	public String getRelationName() {
+		return relationName;
+	}
+	public void setRelationName(String relationName) {
+		this.relationName = relationName;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getStatusResponse() {
+		return statusResponse;
+	}
+	public void setStatusResponse(String statusResponse) {
+		this.statusResponse = statusResponse;
+	}
+	
+	
+
+}

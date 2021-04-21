@@ -1,9 +1,13 @@
 package com.ku.dku.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -47,4 +51,12 @@ public class ProfileController {
 		return response;
 	}
 	
+	@GetMapping("/getFile")
+	public ResponseEntity<byte[]> getFile(@RequestParam("studentId") long txStudentId) {
+		MsFile file = fileService.getFile(txStudentId);
+
+		return ResponseEntity.ok()
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
+				.body(file.getFileData());
+	}
 }

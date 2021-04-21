@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.ku.dku.entity.TxPost;
-import com.ku.dku.entity.TxUtilityBill;
+
 
 public interface TxPostRepository extends JpaRepository<TxPost,Long> {
 

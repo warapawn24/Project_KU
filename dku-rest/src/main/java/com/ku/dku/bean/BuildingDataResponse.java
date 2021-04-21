@@ -4,17 +4,17 @@ public class BuildingDataResponse {
 
 	private long recId;
 	private long roomId;
-	private long romFloor;
+	private long availability;
 	
 	
 	public BuildingDataResponse() {
 		super();
 	}
-	public BuildingDataResponse(long recId, long roomId, long romFloor) {
+	public BuildingDataResponse(long recId, long roomId, long availability) {
 		super();
 		this.recId = recId;
 		this.roomId = roomId;
-		this.romFloor = romFloor;
+		this.availability = availability;
 	}
 	public long getRecId() {
 		return recId;
@@ -28,12 +28,16 @@ public class BuildingDataResponse {
 	public void setRoomId(long roomId) {
 		this.roomId = roomId;
 	}
-	public long getRomFloor() {
-		return romFloor;
+	public long getAvailability() {
+		return availability;
 	}
-	public void setRomFloor(long romFloor) {
-		this.romFloor = romFloor;
+	public void setAvailability(long availability) {
+		this.availability = availability;
 	}
+	
+	
+	
+	
 	
 	
 }

@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Mar 10, 2021 2:42:40 AM by Hibernate Tools 3.2.2.GA
+// Generated Apr 21, 2021 2:56:37 PM by Hibernate Tools 3.2.2.GA
 
 
 import javax.persistence.Column;
@@ -37,9 +37,6 @@ public class MsFile  implements java.io.Serializable, BaseEntity {
     public MsFile() {
     }
 
-    public MsFile(Long txStudentId) {
-        this.txStudentId = txStudentId;
-    }
 
     public MsFile(String fileName, String fileType, byte[] fileData, Long txStudentId) {
         this.fileName = fileName;
@@ -87,7 +84,7 @@ public class MsFile  implements java.io.Serializable, BaseEntity {
         this.fileData = fileData;
     }
     
-    @Column(name="tx_student_id", nullable=false)
+    @Column(name="tx_student_id")
     public Long getTxStudentId() {
         return this.txStudentId;
     }

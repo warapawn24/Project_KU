@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,7 +43,7 @@ public class LoginController {
 
 	}
 	
-	
+	@CrossOrigin(origins = "http://192.168.43.126:8080")
 	@RequestMapping(value = "/login",method = RequestMethod.POST)
 	public @ResponseBody LoginResponse login(@RequestBody LoginRequest request, HttpServletRequest req ) {
 		LoginResponse response = new LoginResponse();

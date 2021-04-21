@@ -5,13 +5,13 @@ import java.util.List;
 public class ListBuildingDataResponse {
 
 	private long roomFloor;
-	private List<RoomDataResponse> listRoom;
+	private List<BuildingDataResponse> listRoom;
 	
 	
 	public ListBuildingDataResponse() {
 		super();
 	}
-	public ListBuildingDataResponse(long roomFloor, List<RoomDataResponse> listRoom) {
+	public ListBuildingDataResponse(long roomFloor, List<BuildingDataResponse> listRoom) {
 		super();
 		this.roomFloor = roomFloor;
 		this.listRoom = listRoom;
@@ -22,12 +22,14 @@ public class ListBuildingDataResponse {
 	public void setRoomFloor(long roomFloor) {
 		this.roomFloor = roomFloor;
 	}
-	public List<RoomDataResponse> getListRoom() {
+	public List<BuildingDataResponse> getListRoom() {
 		return listRoom;
 	}
-	public void setListRoom(List<RoomDataResponse> listRoom) {
+	public void setListRoom(List<BuildingDataResponse> listRoom) {
 		this.listRoom = listRoom;
 	}
+	
+	
 	
 	
 	

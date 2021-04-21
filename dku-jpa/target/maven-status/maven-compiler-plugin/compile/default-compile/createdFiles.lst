@@ -3,6 +3,7 @@ com\ku\dku\entity\QMsBuildingTwo.class
 com\ku\dku\entity\QTxStudent.class
 com\ku\dku\entity\QMsBuildingSeven.class
 com\ku\dku\entity\QTxSetDateBail.class
+com\ku\dku\entity\QMsFileOther.class
 com\ku\dku\entity\QTxUtilityBill.class
 com\ku\dku\entity\QLkBuilding.class
 com\ku\dku\entity\QLkType.class
@@ -24,6 +25,7 @@ com\ku\dku\entity\QLkRole.class
 com\ku\dku\entity\QTxOfficer.class
 com\ku\dku\entity\QTxBailType.class
 com\ku\dku\entity\QStudent.class
+com\ku\dku\entity\QMsPublicRelation.class
 com\ku\dku\entity\QMsYear.class
 com\ku\dku\entity\QMsBuildingEight.class
 com\ku\dku\entity\QMsRoom.class

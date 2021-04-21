@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Mar 15, 2021 7:14:33 PM by Hibernate Tools 3.2.2.GA
+// Generated Apr 21, 2021 2:56:37 PM by Hibernate Tools 3.2.2.GA
 
 
 import javax.persistence.Column;
@@ -24,19 +24,22 @@ public class LkBuilding  implements java.io.Serializable, BaseEntity {
     public static final String P_RECID = "recId";
     public static final String P_BUILDINGID = "buildingId";
     public static final String P_BUILDINGNAME = "buildingName";
+    public static final String P_FILEID = "fileId";
 
 
     private Long recId;
     private Long buildingId;
     private String buildingName;
+    private Long fileId;
 
     public LkBuilding() {
     }
 
 
-    public LkBuilding(Long buildingId, String buildingName) {
+    public LkBuilding(Long buildingId, String buildingName, Long fileId) {
         this.buildingId = buildingId;
         this.buildingName = buildingName;
+        this.fileId = fileId;
     }
    
     @Id 
@@ -51,7 +54,7 @@ public class LkBuilding  implements java.io.Serializable, BaseEntity {
         this.recId = recId;
     }
     
-    @Column(name="building_id", nullable=false)
+    @Column(name="building_id")
     public Long getBuildingId() {
         return this.buildingId;
     }
@@ -60,13 +63,22 @@ public class LkBuilding  implements java.io.Serializable, BaseEntity {
         this.buildingId = buildingId;
     }
     
-    @Column(name="building_name", nullable=false)
+    @Column(name="building_name")
     public String getBuildingName() {
         return this.buildingName;
     }
     
     public void setBuildingName(String buildingName) {
         this.buildingName = buildingName;
+    }
+    
+    @Column(name="file_id")
+    public Long getFileId() {
+        return this.fileId;
+    }
+    
+    public void setFileId(Long fileId) {
+        this.fileId = fileId;
     }
 
 

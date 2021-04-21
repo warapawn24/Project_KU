@@ -23,6 +23,8 @@ public class QLkBuilding extends EntityPathBase<LkBuilding> {
 
     public final StringPath buildingName = createString("buildingName");
 
+    public final NumberPath<Long> fileId = createNumber("fileId", Long.class);
+
     public final NumberPath<Long> recId = createNumber("recId", Long.class);
 
     public QLkBuilding(String variable) {

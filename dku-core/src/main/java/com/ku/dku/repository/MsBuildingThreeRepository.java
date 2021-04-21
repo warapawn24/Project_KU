@@ -12,4 +12,6 @@ public interface MsBuildingThreeRepository extends JpaRepository<MsBuildingThree
 	MsBuildingThree findByBuildingId(long buildingId);
 	
 	MsBuildingThree findByRoomId(long roomId); 
+	
+	Iterable<MsBuildingThree> findByFloorId(long floorId);
 }

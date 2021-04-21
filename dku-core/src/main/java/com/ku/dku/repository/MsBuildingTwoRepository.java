@@ -10,4 +10,6 @@ public interface MsBuildingTwoRepository extends JpaRepository<MsBuildingTwo, Lo
 	MsBuildingTwo findByRecId(long recId);
 	MsBuildingTwo findByBuildingId(long buildingId);
 	MsBuildingTwo findByRoomId(long roomId); 
+	
+	Iterable<MsBuildingTwo> findByFloorId(long floorId);
 }

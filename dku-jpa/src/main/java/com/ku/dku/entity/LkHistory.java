@@ -1,5 +1,5 @@
 package com.ku.dku.entity;
-// Generated Feb 11, 2021 11:10:26 PM by Hibernate Tools 3.2.2.GA
+// Generated Apr 21, 2021 2:56:37 PM by Hibernate Tools 3.2.2.GA
 
 
 import javax.persistence.Column;
@@ -23,17 +23,20 @@ public class LkHistory  implements java.io.Serializable, BaseEntity {
 
     public static final String P_RECID = "recId";
     public static final String P_HISTORYTEXT = "historyText";
+    public static final String P_FILEID = "fileId";
 
 
     private Long recId;
     private String historyText;
+    private Long fileId;
 
     public LkHistory() {
     }
 
 
-    public LkHistory(String historyText) {
+    public LkHistory(String historyText, Long fileId) {
         this.historyText = historyText;
+        this.fileId = fileId;
     }
    
     @Id
@@ -55,6 +58,15 @@ public class LkHistory  implements java.io.Serializable, BaseEntity {
     
     public void setHistoryText(String historyText) {
         this.historyText = historyText;
+    }
+    
+    @Column(name="file_id")
+    public Long getFileId() {
+        return this.fileId;
+    }
+    
+    public void setFileId(Long fileId) {
+        this.fileId = fileId;
     }
 
 

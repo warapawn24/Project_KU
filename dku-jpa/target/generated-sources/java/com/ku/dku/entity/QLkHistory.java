@@ -19,6 +19,8 @@ public class QLkHistory extends EntityPathBase<LkHistory> {
 
     public static final QLkHistory lkHistory = new QLkHistory("lkHistory");
 
+    public final NumberPath<Long> fileId = createNumber("fileId", Long.class);
+
     public final StringPath historyText = createString("historyText");
 
     public final NumberPath<Long> recId = createNumber("recId", Long.class);

@@ -8,6 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ku.dku.constant.LookupConstant;
+import com.ku.dku.entity.MsBuildingEight;
+import com.ku.dku.entity.MsBuildingFive;
+import com.ku.dku.entity.MsBuildingFour;
+import com.ku.dku.entity.MsBuildingOne;
+import com.ku.dku.entity.MsBuildingSeven;
+import com.ku.dku.entity.MsBuildingSix;
+import com.ku.dku.entity.MsBuildingThree;
+import com.ku.dku.entity.MsBuildingTwo;
+import com.ku.dku.entity.MsFee;
 import com.ku.dku.entity.MsRoom;
 import com.ku.dku.entity.MsRunningNumber;
 import com.ku.dku.entity.TxReserve;
@@ -15,7 +24,16 @@ import com.ku.dku.entity.TxReserveDetail;
 import com.ku.dku.entity.TxSetDate;
 import com.ku.dku.entity.TxStudent;
 import com.ku.dku.entity.TxUtilityBill;
+import com.ku.dku.repository.MsBuildingEightRepository;
+import com.ku.dku.repository.MsBuildingFiveRepository;
+import com.ku.dku.repository.MsBuildingFourRepository;
+import com.ku.dku.repository.MsBuildingOneRepository;
 import com.ku.dku.repository.MsBuildingRepository;
+import com.ku.dku.repository.MsBuildingSevenRepository;
+import com.ku.dku.repository.MsBuildingSixRepository;
+import com.ku.dku.repository.MsBuildingThreeRepository;
+import com.ku.dku.repository.MsBuildingTwoRepository;
+import com.ku.dku.repository.MsFeeRepository;
 import com.ku.dku.repository.MsRoomRepository;
 import com.ku.dku.repository.TxReserveDetailRepository;
 import com.ku.dku.repository.TxReserveRepository;
@@ -33,59 +51,327 @@ public class BookRooomService {
 	@Autowired private TxSetDateRepository txSetDateRepository;
 	@Autowired private RunningNumberService runningNumberService;
 	
+	@Autowired private MsBuildingEightRepository msBuildingEightRepository;
+	@Autowired private MsBuildingFiveRepository msBuildingFiveRepository;
+	@Autowired private MsBuildingFourRepository msBuildingFourRepository;	
+	@Autowired private MsBuildingOneRepository	msBuildingOneRepository;
+	@Autowired private MsBuildingSevenRepository msBuildingSevenRepository;
+	@Autowired private MsBuildingSixRepository msBuildingSixRepository;
+	@Autowired private MsBuildingThreeRepository msBuildingThreeRepository;
+	@Autowired private MsBuildingTwoRepository msBuildingTwoRepository;
+	
+	@Autowired private MsFeeRepository msFeeRepository;
+
 	
 	
-	public boolean bookRoom(long roomId,long studentId) {
-		MsRoom msRoom = msRoomRepository.findByRoomId(roomId);
-		
-		Integer amountPeople = msRoom.getRoomStatus();
-		
-		TxStudent txStudent = txStudentRepository.findByStudentId(studentId);
+	
+	
+	public boolean bookRoom(long buildingId,long roomId,TxReserve reserve) {
 		
 		long millies = System.currentTimeMillis();
 		Date date = new Date(millies);
 		
+		Integer building = (int) buildingId;
+		switch (building) {
 		
-	
-		
-		Integer sumPeopele = 0;
-	
-		if (amountPeople < 4) {
-			
-			
-			TxReserve txReserve = new TxReserve();
-			txReserve.setBuildingId(msRoom.getBuildingId());
-			txReserve.setRoomId(roomId);
-			txReserve.setReserveDate(date);
-			txReserve.setReserveDate(date);
-			sumPeopele = msRoom.getRoomStatus()+1;
-			System.out.println("ms"+msRoom.getRoomStatus());
-			System.out.println("sum"+sumPeopele);
-			txReserve.setReserveRoomstatus(sumPeopele);
-			txReserve.setReserveStatus("Unpaid");
-			txReserveRepository.save(txReserve);
-			
-			TxReserveDetail txReserveDetail = new TxReserveDetail();
-			txReserveDetail.setReserveId(txReserve.getRecId());
-			txReserveDetail.setStudentId(studentId);
-			txReserveDetail.setStudentFname(txStudent.getStudentFname());
-			txReserveDetail.setStudentLname(txStudent.getStudentLname());
-			txReserveDetailRepository.save(txReserveDetail);
-			
-			TxStudent studentUpdate = txStudentRepository.findByStudentId(studentId);
-//			String studentRoom = Long.toString(roomId);
-			studentUpdate.setStudentRoom(roomId);
-			txStudentRepository.save(studentUpdate);
-			
-			msRoom.setRoomStatus(sumPeopele);
-			msRoomRepository.save(msRoom);
-			
-					
-		}if (amountPeople == 4)  {
-			return false;
+		 case 1:
+
+			 	MsBuildingOne msBuildingOne = msBuildingOneRepository.findByRoomId(roomId);
+			 	if (msBuildingOne.getNumber()<msBuildingOne.getBuildingTotal()) {
+			 		
+			 		Integer Availability = msBuildingOne.getNumber()+1;
+			 		
+			 		TxReserve txReserve = new TxReserve();
+			 		txReserve.setBuildingId(buildingId);
+			 		txReserve.setBuildingTypeId(msBuildingOne.getTypeId());
+			 		txReserve.setRoomId(roomId);
+			 		txReserve.setStudentId(reserve.getStudentId());
+			 		txReserve.setStudentFname(reserve.getStudentFname());
+			 		txReserve.setStudentLname(reserve.getStudentLname());
+
+			 		TxSetDate setDate = txSetDateRepository.TopTxSetDateOrderByRecIdDESC();
+			 		txReserve.setSetPaymentDue(setDate.getSetPaymentDue());
+			 		txReserve.setSetPaymentstart(setDate.getSetPaymentstart());
+			 		txReserve.setYear(setDate.getYear());
+			 		
+			 		long termId = setDate.getTermId();
+			 		
+			 		MsFee fee = msFeeRepository.findByTermIdANDTypeId(termId, msBuildingOne.getTypeId());
+			 		txReserve.setFeeId(fee.getRecId());
+			 		txReserve.setReserveDate(date);
+			 		txReserve.setReserveRoomstatus(Availability);
+			 		txReserve.setReserveStatus(LookupConstant.RESERVE_STATUS_UNPAID);
+			 		txReserveRepository.save(txReserve);
+			 		
+			 		//saveจำนวนลงที่เดิม
+			 		msBuildingOne.setNumber(Availability);
+			 		msBuildingOneRepository.save(msBuildingOne);
+			 		
+			 		return true;
+				}
+			 	
+			 	
+			    break;
+			   
+		 case 2:
+
+			 	MsBuildingTwo msBuildingTwo = msBuildingTwoRepository.findByRoomId(roomId);
+			 	if (msBuildingTwo.getNumber()<msBuildingTwo.getBuildingTotal()) {
+			 		
+			 		Integer Availability = msBuildingTwo.getNumber()+1;
+			 		
+			 		TxReserve txReserve = new TxReserve();
+			 		txReserve.setBuildingId(buildingId);
+			 		txReserve.setBuildingTypeId(msBuildingTwo.getTypeId());
+			 		txReserve.setRoomId(roomId);
+			 		txReserve.setStudentId(reserve.getStudentId());
+			 		txReserve.setStudentFname(reserve.getStudentFname());
+			 		txReserve.setStudentLname(reserve.getStudentLname());
+
+			 		TxSetDate setDate = txSetDateRepository.TopTxSetDateOrderByRecIdDESC();
+			 		txReserve.setSetPaymentDue(setDate.getSetPaymentDue());
+			 		txReserve.setSetPaymentstart(setDate.getSetPaymentstart());
+			 		txReserve.setYear(setDate.getYear());
+			 		
+			 		long termId = setDate.getTermId();
+			 		
+			 		MsFee fee = msFeeRepository.findByTermIdANDTypeId(termId, msBuildingTwo.getTypeId());
+			 		txReserve.setFeeId(fee.getRecId());
+			 		txReserve.setReserveDate(date);
+			 		txReserve.setReserveRoomstatus(Availability);
+			 		txReserve.setReserveStatus(LookupConstant.RESERVE_STATUS_UNPAID);
+			 		txReserveRepository.save(txReserve);
+			 		
+			 		//saveจำนวนลงที่เดิม
+			 		msBuildingTwo.setNumber(Availability);
+			 		msBuildingTwoRepository.save(msBuildingTwo);
+			 		
+			 		return true;
+				}
+			 	
+			    break;
+		 case 3:
+
+			 	MsBuildingThree msBuildingThree = msBuildingThreeRepository.findByRoomId(roomId);
+			 	if (msBuildingThree.getNumber()<msBuildingThree.getBuildingTotal()) {
+			 		
+			 		Integer Availability = msBuildingThree.getNumber()+1;
+			 		
+			 		TxReserve txReserve = new TxReserve();
+			 		txReserve.setBuildingId(buildingId);
+			 		txReserve.setBuildingTypeId(msBuildingThree.getTypeId());
+			 		txReserve.setRoomId(roomId);
+			 		txReserve.setStudentId(reserve.getStudentId());
+			 		txReserve.setStudentFname(reserve.getStudentFname());
+			 		txReserve.setStudentLname(reserve.getStudentLname());
+
+			 		TxSetDate setDate = txSetDateRepository.TopTxSetDateOrderByRecIdDESC();
+			 		txReserve.setSetPaymentDue(setDate.getSetPaymentDue());
+			 		txReserve.setSetPaymentstart(setDate.getSetPaymentstart());
+			 		txReserve.setYear(setDate.getYear());
+			 		
+			 		long termId = setDate.getTermId();
+			 		
+			 		MsFee fee = msFeeRepository.findByTermIdANDTypeId(termId, msBuildingThree.getTypeId());
+			 		txReserve.setFeeId(fee.getRecId());
+			 		txReserve.setReserveDate(date);
+			 		txReserve.setReserveRoomstatus(Availability);
+			 		txReserve.setReserveStatus(LookupConstant.RESERVE_STATUS_UNPAID);
+			 		txReserveRepository.save(txReserve);
+			 		
+			 		//saveจำนวนลงที่เดิม
+			 		msBuildingThree.setNumber(Availability);
+			 		msBuildingThreeRepository.save(msBuildingThree);
+			 		
+			 		return true;
+				}
+			    break;
+		 case 4:
+
+			 	MsBuildingFour msBuildingFour = msBuildingFourRepository.findByRoomId(roomId);
+			 	if (msBuildingFour.getNumber()<msBuildingFour.getBuildingTotal()) {
+			 		
+			 		Integer Availability = msBuildingFour.getNumber()+1;
+			 		
+			 		TxReserve txReserve = new TxReserve();
+			 		txReserve.setBuildingId(buildingId);
+			 		txReserve.setBuildingTypeId(msBuildingFour.getTypeId());
+			 		txReserve.setRoomId(roomId);
+			 		txReserve.setStudentId(reserve.getStudentId());
+			 		txReserve.setStudentFname(reserve.getStudentFname());
+			 		txReserve.setStudentLname(reserve.getStudentLname());
+
+			 		TxSetDate setDate = txSetDateRepository.TopTxSetDateOrderByRecIdDESC();
+			 		txReserve.setSetPaymentDue(setDate.getSetPaymentDue());
+			 		txReserve.setSetPaymentstart(setDate.getSetPaymentstart());
+			 		txReserve.setYear(setDate.getYear());
+			 		
+			 		long termId = setDate.getTermId();
+			 		
+			 		MsFee fee = msFeeRepository.findByTermIdANDTypeId(termId, msBuildingFour.getTypeId());
+			 		txReserve.setFeeId(fee.getRecId());
+			 		txReserve.setReserveDate(date);
+			 		txReserve.setReserveRoomstatus(Availability);
+			 		txReserve.setReserveStatus(LookupConstant.RESERVE_STATUS_UNPAID);
+			 		txReserveRepository.save(txReserve);
+			 		
+			 		//saveจำนวนลงที่เดิม
+			 		msBuildingFour.setNumber(Availability);
+			 		msBuildingFourRepository.save(msBuildingFour);
+			 		return true;
+				}
+			 	break;
+		 case 5:
+
+			 	MsBuildingFive msBuildingFive = msBuildingFiveRepository.findByRoomId(roomId);
+			 	if (msBuildingFive.getNumber()<msBuildingFive.getBuildingTotal()) {
+			 		
+			 		Integer Availability = msBuildingFive.getNumber()+1;
+			 		
+			 		TxReserve txReserve = new TxReserve();
+			 		txReserve.setBuildingId(buildingId);
+			 		txReserve.setBuildingTypeId(msBuildingFive.getTypeId());
+			 		txReserve.setRoomId(roomId);
+			 		txReserve.setStudentId(reserve.getStudentId());
+			 		txReserve.setStudentFname(reserve.getStudentFname());
+			 		txReserve.setStudentLname(reserve.getStudentLname());
+
+			 		TxSetDate setDate = txSetDateRepository.TopTxSetDateOrderByRecIdDESC();
+			 		txReserve.setSetPaymentDue(setDate.getSetPaymentDue());
+			 		txReserve.setSetPaymentstart(setDate.getSetPaymentstart());
+			 		txReserve.setYear(setDate.getYear());
+			 		
+			 		long termId = setDate.getTermId();
+			 		
+			 		MsFee fee = msFeeRepository.findByTermIdANDTypeId(termId, msBuildingFive.getTypeId());
+			 		txReserve.setFeeId(fee.getRecId());
+			 		txReserve.setReserveDate(date);
+			 		txReserve.setReserveRoomstatus(Availability);
+			 		txReserve.setReserveStatus(LookupConstant.RESERVE_STATUS_UNPAID);
+			 		txReserveRepository.save(txReserve);
+			 		
+			 		//saveจำนวนลงที่เดิม
+			 		msBuildingFive.setNumber(Availability);
+			 		msBuildingFiveRepository.save(msBuildingFive);
+			 		
+			 		return true;
+				}
+			    break;
+			    
+		 case 6:
+
+			 	MsBuildingSix msBuildingSix = msBuildingSixRepository.findByRoomId(roomId);
+			 	if (msBuildingSix.getNumber()<msBuildingSix.getBuildingTotal()) {
+			 		
+			 		Integer Availability = msBuildingSix.getNumber()+1;
+			 		
+			 		TxReserve txReserve = new TxReserve();
+			 		txReserve.setBuildingId(buildingId);
+			 		txReserve.setBuildingTypeId(msBuildingSix.getTypeId());
+			 		txReserve.setRoomId(roomId);
+			 		txReserve.setStudentId(reserve.getStudentId());
+			 		txReserve.setStudentFname(reserve.getStudentFname());
+			 		txReserve.setStudentLname(reserve.getStudentLname());
+
+			 		TxSetDate setDate = txSetDateRepository.TopTxSetDateOrderByRecIdDESC();
+			 		txReserve.setSetPaymentDue(setDate.getSetPaymentDue());
+			 		txReserve.setSetPaymentstart(setDate.getSetPaymentstart());
+			 		txReserve.setYear(setDate.getYear());
+			 		
+			 		long termId = setDate.getTermId();
+			 		
+			 		MsFee fee = msFeeRepository.findByTermIdANDTypeId(termId, msBuildingSix.getTypeId());
+			 		txReserve.setFeeId(fee.getRecId());
+			 		txReserve.setReserveDate(date);
+			 		txReserve.setReserveRoomstatus(Availability);
+			 		txReserve.setReserveStatus(LookupConstant.RESERVE_STATUS_UNPAID);
+			 		txReserveRepository.save(txReserve);
+			 		
+			 		//saveจำนวนลงที่เดิม
+			 		msBuildingSix.setNumber(Availability);
+			 		msBuildingSixRepository.save(msBuildingSix);
+			 		
+			 		return true;
+				}
+			    break;
+			    
+		 case 7:
+
+			 	MsBuildingSeven msBuildingSeven = msBuildingSevenRepository.findByRoomId(roomId);
+			 	if (msBuildingSeven.getNumber()<msBuildingSeven.getBuildingTotal()) {
+			 		
+			 		Integer Availability = msBuildingSeven.getNumber()+1;
+			 		
+			 		TxReserve txReserve = new TxReserve();
+			 		txReserve.setBuildingId(buildingId);
+			 		txReserve.setBuildingTypeId(msBuildingSeven.getTypeId());
+			 		txReserve.setRoomId(roomId);
+			 		txReserve.setStudentId(reserve.getStudentId());
+			 		txReserve.setStudentFname(reserve.getStudentFname());
+			 		txReserve.setStudentLname(reserve.getStudentLname());
+
+			 		TxSetDate setDate = txSetDateRepository.TopTxSetDateOrderByRecIdDESC();
+			 		txReserve.setSetPaymentDue(setDate.getSetPaymentDue());
+			 		txReserve.setSetPaymentstart(setDate.getSetPaymentstart());
+			 		txReserve.setYear(setDate.getYear());
+			 		
+			 		long termId = setDate.getTermId();
+			 		
+			 		MsFee fee = msFeeRepository.findByTermIdANDTypeId(termId, msBuildingSeven.getTypeId());
+			 		txReserve.setFeeId(fee.getRecId());
+			 		txReserve.setReserveDate(date);
+			 		txReserve.setReserveRoomstatus(Availability);
+			 		txReserve.setReserveStatus(LookupConstant.RESERVE_STATUS_UNPAID);
+			 		txReserveRepository.save(txReserve);
+			 		
+			 		//saveจำนวนลงที่เดิม
+			 		msBuildingSeven.setNumber(Availability);
+			 		msBuildingSevenRepository.save(msBuildingSeven);
+			 		
+			 		return true;
+				}
+			    break;
+			    
+		 case 8:
+
+			 	MsBuildingEight msBuildingEight = msBuildingEightRepository.findByRoomId(roomId);
+			 	if (msBuildingEight.getNumber()<msBuildingEight.getBuildingTotal()) {
+			 		
+			 		Integer Availability = msBuildingEight.getNumber()+1;
+			 		
+			 		TxReserve txReserve = new TxReserve();
+			 		txReserve.setBuildingId(buildingId);
+			 		txReserve.setBuildingTypeId(msBuildingEight.getTypeId());
+			 		txReserve.setRoomId(roomId);
+			 		txReserve.setStudentId(reserve.getStudentId());
+			 		txReserve.setStudentFname(reserve.getStudentFname());
+			 		txReserve.setStudentLname(reserve.getStudentLname());
+
+			 		TxSetDate setDate = txSetDateRepository.TopTxSetDateOrderByRecIdDESC();
+			 		txReserve.setSetPaymentDue(setDate.getSetPaymentDue());
+			 		txReserve.setSetPaymentstart(setDate.getSetPaymentstart());
+			 		txReserve.setYear(setDate.getYear());
+			 		
+			 		long termId = setDate.getTermId();
+			 		
+			 		MsFee fee = msFeeRepository.findByTermIdANDTypeId(termId, msBuildingEight.getTypeId());
+			 		txReserve.setFeeId(fee.getRecId());
+			 		txReserve.setReserveDate(date);
+			 		txReserve.setReserveRoomstatus(Availability);
+			 		txReserve.setReserveStatus(LookupConstant.RESERVE_STATUS_UNPAID);
+			 		txReserveRepository.save(txReserve);
+			 		
+			 		//saveจำนวนลงที่เดิม
+			 		msBuildingEight.setNumber(Availability);
+			 		msBuildingEightRepository.save(msBuildingEight);
+			 		
+			 		return true;
+				}
+			    break;
+
 		}
 		return true;
-		}
+	}
 	
 	
 	
@@ -181,4 +467,6 @@ public class BookRooomService {
 		return txReserve;
 	}
 	
+	
+	//ดึงข้อมูล
 }

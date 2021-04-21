@@ -12,4 +12,6 @@ public interface MsBuildingFiveRepository extends JpaRepository<MsBuildingFive, 
 	MsBuildingFive findByBuildingId(long buildingId);
 	
 	MsBuildingFive findByRoomId(long roomId);
+	
+	Iterable<MsBuildingFive> findByFloorId(long floorId);
 }

@@ -11,4 +11,5 @@ public interface MsBuildingSixRepository extends JpaRepository<MsBuildingSix, Lo
 	MsBuildingSix findByBuildingId(long buildingId);
 	
 	MsBuildingSix findByRoomId(long roomId); 
+	Iterable<MsBuildingSix> findByFloorId(long floorId);
 }

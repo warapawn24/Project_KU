@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ku.dku.bean.AdminUpdateUtilityDetailRequest;
+import com.ku.dku.bean.AdminUpdateUtilityDetailResponse;
 import com.ku.dku.bean.LastUtilityBillDetailResponse;
 import com.ku.dku.bean.ListLastUtilityBillDetailResponse;
 import com.ku.dku.bean.ListLastUtilityBillThreeResponse;
@@ -27,9 +30,11 @@ import com.ku.dku.bean.UtilityReceiptResponse;
 import com.ku.dku.constant.LookupConstant;
 import com.ku.dku.entity.LkRole;
 import com.ku.dku.entity.TxOfficer;
+import com.ku.dku.entity.TxStudent;
 import com.ku.dku.entity.TxUtilityBill;
 import com.ku.dku.repository.LkRoleRepository;
 import com.ku.dku.repository.TxOfficerRepository;
+import com.ku.dku.repository.TxStudentRepository;
 import com.ku.dku.repository.TxUtilityBillRepository;
 import com.ku.dku.service.UtilityBillService;
 
@@ -41,6 +46,7 @@ public class UtilityBillController {
 	@Autowired private TxOfficerRepository txOfficerRepository;
 	@Autowired private LkRoleRepository lkRoleRepository;
 	@Autowired private TxUtilityBillRepository txUtilityBillRepository;
+	@Autowired private TxStudentRepository txStudentRepository;
 	
 	@RequestMapping(value = "/utilityData",method = RequestMethod.POST)
 	public @ResponseBody UtilityBillResponse utilityData(@RequestBody UtilityBillRequest request) {
@@ -151,4 +157,8 @@ public class UtilityBillController {
 		
 		return response;
 	}
+	
+	
+	
+
 }
