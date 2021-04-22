@@ -148,12 +148,11 @@ public class AdminProfileController {
 	}
 	
 	@PostMapping(value = "/uploadFile")
-	public ResponseEntity<FileStatusResponse> uploadFile(@RequestParam("file") MultipartFile file,
-			@RequestParam("studentId") long txStudentId) {
+	public ResponseEntity<FileStatusResponse> uploadFile(@RequestParam("file") MultipartFile file) {
 		String message = "";
 
 		try {
-			fileService.store(file, txStudentId);
+			fileService.storeOther(file);
 			message = "Uploaded the file successfully: " + file.getOriginalFilename();
 			return ResponseEntity.status(HttpStatus.OK).body(new FileStatusResponse(message));
 

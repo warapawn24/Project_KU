@@ -103,6 +103,10 @@ public class BookRooomService {
 			 		txReserve.setReserveStatus(LookupConstant.RESERVE_STATUS_UNPAID);
 			 		txReserveRepository.save(txReserve);
 			 		
+			 		TxStudent student = txStudentRepository.findByStudentId(reserve.getStudentId());
+			 		student.setStudentRoom(roomId);
+			 		txStudentRepository.save(student);
+			 		
 			 		//saveจำนวนลงที่เดิม
 			 		msBuildingOne.setNumber(Availability);
 			 		msBuildingOneRepository.save(msBuildingOne);
@@ -146,6 +150,10 @@ public class BookRooomService {
 			 		msBuildingTwo.setNumber(Availability);
 			 		msBuildingTwoRepository.save(msBuildingTwo);
 			 		
+			 		TxStudent student = txStudentRepository.findByStudentId(reserve.getStudentId());
+			 		student.setStudentRoom(roomId);
+			 		txStudentRepository.save(student);
+			 		
 			 		return true;
 				}
 			 	
@@ -183,6 +191,10 @@ public class BookRooomService {
 			 		msBuildingThree.setNumber(Availability);
 			 		msBuildingThreeRepository.save(msBuildingThree);
 			 		
+			 		TxStudent student = txStudentRepository.findByStudentId(reserve.getStudentId());
+			 		student.setStudentRoom(roomId);
+			 		txStudentRepository.save(student);
+			 		
 			 		return true;
 				}
 			    break;
@@ -218,6 +230,10 @@ public class BookRooomService {
 			 		//saveจำนวนลงที่เดิม
 			 		msBuildingFour.setNumber(Availability);
 			 		msBuildingFourRepository.save(msBuildingFour);
+			 		
+			 		TxStudent student = txStudentRepository.findByStudentId(reserve.getStudentId());
+			 		student.setStudentRoom(roomId);
+			 		txStudentRepository.save(student);
 			 		return true;
 				}
 			 	break;
@@ -253,6 +269,10 @@ public class BookRooomService {
 			 		//saveจำนวนลงที่เดิม
 			 		msBuildingFive.setNumber(Availability);
 			 		msBuildingFiveRepository.save(msBuildingFive);
+			 		
+			 		TxStudent student = txStudentRepository.findByStudentId(reserve.getStudentId());
+			 		student.setStudentRoom(roomId);
+			 		txStudentRepository.save(student);
 			 		
 			 		return true;
 				}
@@ -291,6 +311,9 @@ public class BookRooomService {
 			 		msBuildingSix.setNumber(Availability);
 			 		msBuildingSixRepository.save(msBuildingSix);
 			 		
+			 		TxStudent student = txStudentRepository.findByStudentId(reserve.getStudentId());
+			 		student.setStudentRoom(roomId);
+			 		txStudentRepository.save(student);
 			 		return true;
 				}
 			    break;
@@ -328,6 +351,10 @@ public class BookRooomService {
 			 		msBuildingSeven.setNumber(Availability);
 			 		msBuildingSevenRepository.save(msBuildingSeven);
 			 		
+			 		TxStudent student = txStudentRepository.findByStudentId(reserve.getStudentId());
+			 		student.setStudentRoom(roomId);
+			 		txStudentRepository.save(student);
+			 		
 			 		return true;
 				}
 			    break;
@@ -364,6 +391,10 @@ public class BookRooomService {
 			 		//saveจำนวนลงที่เดิม
 			 		msBuildingEight.setNumber(Availability);
 			 		msBuildingEightRepository.save(msBuildingEight);
+			 		
+			 		TxStudent student = txStudentRepository.findByStudentId(reserve.getStudentId());
+			 		student.setStudentRoom(roomId);
+			 		txStudentRepository.save(student);
 			 		
 			 		return true;
 				}

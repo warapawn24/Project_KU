@@ -10,6 +10,7 @@ C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\ReserveRe
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\AdminForgotPasswordResponse.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\AdminForgotPasswordRequest.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\ChangeOfficerStatusResponse.java
+C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\ListAdminUpdateDataStudentRequest.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\UpdateBailResponse.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\RoomDataResponse.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\AdminRepairShowDetailRequest.java
@@ -17,6 +18,7 @@ C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\SetDateBa
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\LoginResponse.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\BookRoomDataRequest.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\CreateRepairNumberRequest.java
+C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\AdminUpdateDataStudentResponse.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\controller\BailController.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\controller\AdminAuthController.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\SetDateBailResponse.java
@@ -90,6 +92,7 @@ C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\AdminLogi
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\FileStatusResponse.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\ListAdminUpdatePhotoRequest.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\UtilityBillRequest.java
+C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\AdminUpdateDataStudentRequest.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\AdminCheckOTPRequest.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\BuildingDataRequest.java
 C:\Users\WIN10_Mall7\KU_Project\dku-rest\src\main\java\com\ku\dku\bean\RepairRequest.java

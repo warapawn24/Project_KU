@@ -1,0 +1,12 @@
+package com.ku.dku.bean;
+
+public class AdminUpdateDataStudentRequest {
+
+	private String studentUsername;
+	private String studentPassword;
+	private String studentFname;
+	private String studentLname;
+	private String studentEmail;
+	private String studentFaculty;
+	
+}
